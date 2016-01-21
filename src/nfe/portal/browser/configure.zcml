@@ -3,4 +3,6 @@
     xmlns:browser="http://namespaces.zope.org/browser"
     i18n_domain="nfe.portal">
 
+    <!-- Viewlets -->
+ 	<include package='.viewlets' />
 </configure>

@@ -1,0 +1,16 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="nfe.portal">
+
+  <browser:viewlet
+     name="prodam.nfe.footer"
+     manager="plone.app.layout.viewlets.interfaces.IPortalFooter"
+     class=".viewlets.FooterNfe"
+     layer="prodam.portal.interfaces.IProdamPortal"
+     template="templates/footer_nfe.pt"
+     permission="zope2.View"
+     />
+
+</configure>
+
