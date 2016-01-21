@@ -15,7 +15,7 @@
      <browser:viewlet
      name="nfe.logo.principal"
      manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
-     class=".viewlets.DefaultViewlet"
+     class="plone.app.layout.viewlets.common.LogoViewlet"
      permission="zope2.View"
      layer="nfe.portal.interfaces.IProdamPortal"
      />
