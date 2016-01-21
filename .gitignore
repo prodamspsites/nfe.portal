@@ -29,5 +29,6 @@ src/collective.transmogrifier/
 src/prodam.tema
 src/prodam.tiles
 src/prodam.secoes
+src/nfe.tema
 var/
 dist/
