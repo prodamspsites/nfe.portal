@@ -4,5 +4,5 @@
     i18n_domain="nfe.portal">
 
     <!-- Viewlets -->
- 	<include package='.viewlets' />
+    <include package='.viewlets' />
 </configure>
