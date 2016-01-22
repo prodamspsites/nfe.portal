@@ -18,6 +18,7 @@
      class="plone.app.layout.viewlets.common.LogoViewlet"
      permission="zope2.View"
      layer="nfe.portal.interfaces.IProdamPortal"
+     template="templates/logo.pt"
      />
 
 </configure>
