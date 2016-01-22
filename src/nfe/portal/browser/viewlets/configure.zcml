@@ -39,5 +39,14 @@
         template="templates/reclamacoes.pt"
     />
 
+    <browser:viewlet
+        name="nfe.acesso.mobile"
+        manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
+        class="plone.app.layout.viewlets.common.LogoViewlet"
+        permission="zope2.View"
+        layer="nfe.portal.interfaces.IProdamPortal"
+        template="templates/acesso_mobile.pt"
+    />
+
 </configure>
 
