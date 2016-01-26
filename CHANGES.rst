@@ -2,7 +2,8 @@ Histórico de Alterações
 -------------------------
 
 0.5a1 (unreleased)
-* Cria tipo chamadas [wblima]
+* Adiciona collective.cover na instalação do produto [wblima]
+* Cria tipo chamadas [mjunior]
 * Cria viewlet de footer [wblima]
 * Cria viewlet de logo [wblima]]
 * Adiciona versions.cfg [mjunior]
