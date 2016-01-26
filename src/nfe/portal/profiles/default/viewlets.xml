@@ -6,5 +6,8 @@
 
   <order manager="plone.portalheader" skinname="*">
     <viewlet name="nfe.logo.principal"/>
+    <viewlet name="nfe.logo.secundario"/>
+    <viewlet name="nfe.reclamacoes"/>
+    <viewlet name="nfe.acesso.mobile"/>
   </order>
 </object>
