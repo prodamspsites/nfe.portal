@@ -1,0 +1,22 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="nfe.portal">
+
+  <include package="plone.tiles" file="meta.zcml" />
+  <include package="z3c.unconfigure" file="meta.zcml" />
+
+  <plone:tile
+      name="chamada"
+      title="Lista de chamadas"
+      description="Um tile de chamadas para capas."
+      add_permission="cmf.ModifyPortalContent"
+      schema=".chamada.IChamada"
+      class=".chamada.Chamada"
+      permission="zope2.View"
+      for="*"
+      i18n:attributes="title; description"
+      />
+
+</configure>

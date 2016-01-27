@@ -5,4 +5,7 @@
 
     <!-- Viewlets -->
     <include package='.viewlets' />
+
+    <!-- Conteudos -->
+    <include package='.content' />
 </configure>
