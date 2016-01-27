@@ -4,5 +4,22 @@
 
   <include package="plone.app.portlets" />
 
+    <plone:portlet
+        name="nfe.acessoSistema"
+        interface=".acessoSistema.iAcesso"
+        assignment=".acessoSistema.Assignment"
+        renderer=".acessoSistema.Renderer"
+        addview=".acessoSistema.AddForm"
+        editview=".acessoSistema.EditForm"
+        />
+
+    <plone:portlet
+        name="nfe.placar"
+        interface=".placar.iPlacar"
+        assignment=".placar.Assignment"
+        renderer=".placar.Renderer"
+        addview=".placar.AddForm"
+        editview=".placar.EditForm"
+        />
 
 </configure>

@@ -1,0 +1,50 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="prodam.portal">
+
+  <body>
+    <metal:content-core fill-slot="main">
+      <metal:block define-macro="main">
+        <header class="titulo_principal">
+          <h1>Notícias</h1>
+        </header>
+        <article>
+          <header>
+            <h1 tal:content="context/Title | nothing">Template de notícias</h1>
+            <h2 tal:content="context/Description | nothing">Descrição</h2>
+            <div class="noticias_media">
+AAAAAAAAAAAAAAAAAAAAAAAA
+              <tal:published tal:define="wtool context/portal_workflow;
+                                         state context/review_state | python: wtool.getInfoFor(context, 'review_state', '')"
+                             tal:condition="python:state == 'published'">BBBBBBBBBBBBBBBBBBBBBBBBBB
+                <time tal:define="date context/EffectiveDate;
+                                  data python:DateTime(date).strftime('%d/%m/%Y');
+                                  hora python:DateTime(date).strftime('%H:%M')"
+                      tal:content="python:hora + ' às ' + data" />
+                  <tal:modified tal:condition="python: context.EffectiveDate() != context.ModificationDate()">
+                    - Atualizado às <span tal:define="mDate context/ModificationDate;
+                                                      mData python:DateTime(mDate).strftime('%d/%m/%Y');
+                                                      mHora python:DateTime(mDate).strftime('%H:%M')"
+                                          tal:replace="python:mHora + ' às ' + mData" />
+                  </tal:modified>
+              </tal:published>
+
+              <div class="autor">Por
+                <strong tal:content="context/autor | string:Redação" />
+              </div>
+            </div>
+          </header>
+          <div class="contentBody" tal:define="texto context/text/raw | nothing">
+            <p tal:replace="structure texto">Conteúdo</p>
+          </div>
+          <div tal:replace="structure provider:plone.belowcontentbody" />
+        </article>
+      </metal:block>
+    </metal:content-core>
+  </body>
+
+</html>

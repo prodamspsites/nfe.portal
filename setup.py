@@ -43,6 +43,8 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
+        'nfe.tema',
+        'collective.cover',
         'collective.nitf',
         'sc.social.like',
         'five.pt',

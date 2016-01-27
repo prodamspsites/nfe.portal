@@ -3,6 +3,7 @@
     i18n_domain="nfe.portal">
 
   <include package="sc.social.like" />
+  <include package="nfe.tema" />
   <include package="plone.app.contenttypes" />
   <include package="Products.CMFPlone" />
 

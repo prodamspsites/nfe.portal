@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<object>
+  <order manager="plone.plonefooter" skinname="*">
+    <viewlet name="nfe.footer" before="doormat.footer"/>
+  </order>
+
+  <order manager="plone.portalheader" skinname="*">
+    <viewlet name="nfe.logo.principal"/>
+    <viewlet name="nfe.logo.secundario"/>
+    <viewlet name="nfe.reclamacoes"/>
+    <viewlet name="nfe.acesso.mobile"/>
+  </order>
+</object>
