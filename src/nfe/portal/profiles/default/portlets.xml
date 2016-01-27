@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<portlets
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="prodam.portal">
+ <!-- Portlet type registrations -->
+ <portlet
+   addview="nfe.acessoSistema"
+   title="Acesso ao sistema"
+   description="Mostrar box de acesso ao sistema.">
+   <for interface="plone.app.portlets.interfaces.IColumn" />
+   <for interface="plone.app.portlets.interfaces.IDashboard" />
+ </portlet>
+
+ <portlet
+   addview="nfe.placar"
+   title="Mostrar placar"
+   description="Mostrar placar">
+   <for interface="plone.app.portlets.interfaces.IColumn" />
+   <for interface="plone.app.portlets.interfaces.IDashboard" />
+ </portlet>
+
+</portlets>

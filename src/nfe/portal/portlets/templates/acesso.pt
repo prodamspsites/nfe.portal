@@ -1,0 +1,30 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      tal:omit-tag=""
+      i18n:domain="prodam.portal">
+
+      <div class="divSideBarAcesso">
+        <h2>Acesso ao sistema</h2>
+        <form class="acessoSistema">
+          <fieldset>
+            <legend>Formulário de acesso ao sistema</legend>
+            <input type="text" class="inputAcesso" placeholder="CPF ou CNPJ" />
+            <input type="password" class="inputAcesso" placeholder="Senha" />
+            <input type="submit" value="Entrar" class="btnEntrar" />
+            <ul class="esqueciSenha">
+              <li><a href="#" title="Esqueci a senha">Esqueci a senha</a></li>
+              <li>|</li>
+              <li><a href="#" title="Nâo sou cadastrado">Nâo sou cadastrado</a></li>
+            </ul>
+            <a href="#" title="Acesso com certificado digital" class="btnAcessoCertificado">Acesso com certificado digital</a>
+          </fieldset>
+        </form>
+      </div>
+      <div class="divSideBarAcessoBottom">
+        <p>Instale o aplicativo no seu smartphone</p>
+        <a href="#" title="Baixar na Play Store" class="btnPlay"><span>Baixar na <strong>Play Store</strong></span></a>
+        <a href="#" title="Baixar na App Store" class="btnApp"><span>Baixar na <strong>App Store</strong></span></a>
+      </div>
+
+</html>
