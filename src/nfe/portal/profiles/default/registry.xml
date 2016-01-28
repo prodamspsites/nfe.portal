@@ -3,6 +3,7 @@
   <record name="plone.app.tiles">
     <value purge="false">
       <element>chamada</element>
+      <element>page_template</element>
     </value>
   </record>
   <record field="available_tiles"
@@ -10,6 +11,7 @@
           name="collective.cover.controlpanel.ICoverSettings.available_tiles">
     <value purge="false">
       <element>chamada</element>
+      <element>page_template</element>
     </value>
   </record>
 </registry>
