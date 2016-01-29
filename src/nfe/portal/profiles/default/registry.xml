@@ -5,6 +5,7 @@
       <element>chamada</element>
       <element>nfe.sliderHome</element>
       <element>nfe.comofunciona</element>
+      <element>page_template</element>
     </value>
   </record>
   <record field="available_tiles"
@@ -14,6 +15,7 @@
       <element>chamada</element>
       <element>nfe.sliderHome</element>
       <element>nfe.comofunciona</element>
+      <element>page_template</element>
     </value>
   </record>
 </registry>
