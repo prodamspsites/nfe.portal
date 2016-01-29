@@ -16,7 +16,7 @@ from zope.component import queryUtility
 from zope.schema import getFieldsInOrder
 
 
-class IChamada(IPersistentCoverTile, form.Schema):
+class ISlider(IPersistentCoverTile, form.Schema):
 
     header = schema.TextLine(
         title=_(u'Header'),
@@ -81,9 +81,9 @@ class IChamada(IPersistentCoverTile, form.Schema):
     )
 
 
-class Chamada(PersistentCoverTile):
+class Slider(PersistentCoverTile):
 
-    index = ViewPageTemplateFile('templates/chamada.pt')
+    index = ViewPageTemplateFile('templates/slider.pt')
 
     is_configurable = True
     is_editable = True
@@ -115,7 +115,7 @@ class Chamada(PersistentCoverTile):
             uuidToObject(self.data.get('uuid')) is None
 
     def populate_with_object(self, obj):
-        super(Chamada, self).populate_with_object(obj)  # check permission
+        super(Slider, self).populate_with_object(obj)  # check permission
 
         if obj.portal_type in self.accepted_ct():
             header = obj.Title()  # use collection's title as header

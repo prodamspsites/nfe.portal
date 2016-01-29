@@ -19,4 +19,28 @@
       i18n:attributes="title; description"
       />
 
+  <plone:tile
+      name="nfe.sliderHome"
+      title="Slider home"
+      description="Exibe chamadas no formato slider"
+      add_permission="cmf.ModifyPortalContent"
+      schema=".slider.ISlider"
+      class=".slider.Slider"
+      permission="zope2.View"
+      for="*"
+      i18n:attributes="title; description"
+      />
+
+  <plone:tile
+      name="nfe.comofunciona"
+      title="Como Funciona"
+      description="Exibe tutorial"
+      add_permission="cmf.ModifyPortalContent"
+      schema=".tutorial.ITutorial"
+      class=".tutorial.Tutorial"
+      permission="zope2.View"
+      for="*"
+      i18n:attributes="title; description"
+      />
+
 </configure>
