@@ -1,0 +1,57 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="collective.cover">
+
+  <body tal:define="is_empty view/is_empty">
+    <p tal:condition="is_empty" i18n:translate="">
+        Please drop a collection here to fill the tile.
+    </p>
+    <div class="cover-chamada-tile" tal:condition="not:is_empty">
+      <tal:results tal:define="results view/results|nothing;
+                               conf_fields view/configured_fields;
+                               toLocalizedTime nocall:context/@@plone/toLocalizedTime">
+        <div tal:condition="not:results">
+            <p i18n:translate="">The collection doesn't have any results.</p>
+        </div>
+
+
+          <div class="divSlider2">
+            <h2>Como funciona?</h2>
+            <ul class="bxslider2">
+
+            <tal:collection tal:repeat="item results">
+              <tal:chamada tal:condition="python:item.portal_type=='prodam.chamadas'">
+
+                <li tal:define="obj item/getObject;">
+                  <tal:hasImage tal:condition="python:obj.image">
+
+                    <img  tal:define="path python:'/'.join(obj.getPhysicalPath())"
+                          tal:attributes="src string:${path}/@@images/image.jpeg;
+                                          alt obj/Description|obj/Title"
+                          class="imgSlider2" />
+                  </tal:hasImage>
+                  <span class="sliderNumber" tal:content="repeat/item/number">1</span>
+
+                  <div class="txtSlider2">
+                    <h3 tal:content="obj/Title">Titulo</h3>
+                    <p tal:content="obj/Description">
+                    </p>
+                    <a href="#" title="cotinuar lendo" class="btnContinuar"
+                       tal:attributes="href obj/url">Clique aqui</a>
+                  </div>
+                </li>
+
+              </tal:chamada>
+            </tal:collection>
+
+          </ul>
+        </div>
+
+
+        <div class="visualClear"><!-- --></div>
+      </tal:results>
+    </div>
+  </body>
+</html>
