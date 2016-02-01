@@ -1,4 +1,5 @@
 <div id="logo">
+ <a href="#" class="menuResp">Abrir/Fechar menu</a>
  <h1 id="portal-title">
    <a href="/portal" tal:attributes="href context/portal_url"></a>
  </h1>
