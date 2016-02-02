@@ -1,5 +1,4 @@
-(function($) {
-  $(document).ready(function() {
+$(document).ready(function(){
     $('.bxslider').bxSlider({
      // auto: true,
       //autoControls: true,
@@ -9,7 +8,31 @@
       pager: 'short'
     });
 
+
+    //CHECA A LARGURA DA TELA PARA MENU
+    var windowsize = $(window).width();
+
+    $(window).resize(function() {
+      var windowsize = $(window).width();
+      $('.divMenu, .menuSite').show();
+    });
+
+    //MENU MOBILE
+    $('.menuResp').click(function(){
+        $('.divMenu, .menuSite').toggle();
+    });
+    if (windowsize < 800) {
+        $('nav.menu ul li.submenu').click(function(){
+            $(this).toggleClass('active');
+            $(this).find('.menuLista').toggle();
+        });
+    }
     //MENU
+    if (windowsize > 800) {
+        $('nav.menu ul li.submenu').hover(function(){
+            $(this).find('.menuLista').toggle();
+        });
+    }
     $('ul.globalnav li.cidadao').click(function(){
         $('nav.menu.empresas').hide();
         $('nav.menu.cidadao').show();
@@ -17,10 +40,6 @@
     $('ul.globalnav li.empresas').click(function(){
         $('nav.menu.empresas').show();
         $('nav.menu.cidadao').hide();
-    });
-
-    $('nav.menu ul li.submenu').hover(function(){
-        $(this).find('.menuLista').toggle();
     });
 
     // Cria os Cookies
@@ -76,7 +95,7 @@
             $('body').css("font-size",maisUm+"px");
         }
         function resetFont(){
-            $('body').css("font-size","12px");
+            $('body').css("font-size","19px");
 
             $.removeCookie('contraste2', { path: '/' });
             $.removeCookie('contraste1', { path: '/' });
@@ -139,5 +158,5 @@
             $.cookie('librasCookie',$(this).attr('id'),{ path: '/' });
 
         });
-  })
-})(jQuery);
+
+});

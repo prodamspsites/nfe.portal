@@ -14,7 +14,7 @@
             <input type="submit" value="Entrar" class="btnEntrar" />
             <ul class="esqueciSenha">
               <li><a href="#" title="Esqueci a senha">Esqueci a senha</a></li>
-              <li>|</li>
+              <li class="divisaoEsquec">|</li>
               <li><a href="#" title="Nâo sou cadastrado">Nâo sou cadastrado</a></li>
             </ul>
             <a href="#" title="Acesso com certificado digital" class="btnAcessoCertificado">Acesso com certificado digital</a>
