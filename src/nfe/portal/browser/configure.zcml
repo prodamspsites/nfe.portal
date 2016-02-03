@@ -8,4 +8,12 @@
 
     <!-- Conteudos -->
     <include package='.content' />
+
+    <browser:page
+    name="section_view"
+    for="*"
+    class=".view.SectionView"
+    template="templates/section_view.pt"
+    permission="zope2.View"
+    />
 </configure>
