@@ -64,6 +64,7 @@ setup(
         'collective.twitter.portlets',
         'python-oauth2',
         'z3c.unconfigure',
+        'quintagroup.dropdownmenu',
     ],
     extras_require={
         'test': [
