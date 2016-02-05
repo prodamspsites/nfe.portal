@@ -1,14 +1,17 @@
 $(document).ready(function(){
-    $('.bxslider').bxSlider({
-     // auto: true,
-      //autoControls: true,
+    //ACCORDEON
+    $('.divAccordeon .textoAccordeon').hide();
+    $('.divAccordeon h3').click(function(){
+        $(this).toggleClass('active');
+        $(this).next().slideToggle();
+        /*if($(this).is('.active')){
+        }else{
+            $(this).next().slideToggle();
+            $('.divAccordeon .textoAccordeon').slideUp();
+        }*/
+
     });
-
-    $('.bxslider2').bxSlider({
-      pager: 'short'
-    });
-
-
+    
     //CHECA A LARGURA DA TELA PARA MENU
     var windowsize = $(window).width();
 
