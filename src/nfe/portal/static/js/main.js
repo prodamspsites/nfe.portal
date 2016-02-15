@@ -11,7 +11,16 @@ $(document).ready(function(){
         }*/
 
     });
-    
+
+    //SIDEBAR FIXO
+    $(window).scroll(function() {
+        if ($(this).scrollTop() > 350) {
+            $('#portal-column-two').addClass('fixo');
+        } else {
+            $('#portal-column-two').removeClass('fixo');
+        }
+    });
+
     //CHECA A LARGURA DA TELA PARA MENU
     var windowsize = $(window).width();
 
