@@ -1,4 +1,14 @@
 $(document).ready(function(){
+    //SLIDER HOME
+    $('.bxslider').bxSlider({
+     // auto: true,
+      //autoControls: true,
+    });
+
+    $('.bxslider2').bxSlider({
+      pager: 'short'
+    });
+
     //ACCORDEON
     $('.divAccordeon .textoAccordeon').hide();
     $('.divAccordeon h3').click(function(){
