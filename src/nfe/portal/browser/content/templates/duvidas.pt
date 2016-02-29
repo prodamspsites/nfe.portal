@@ -42,7 +42,7 @@
                                                           resposta python:obj.portal_catalog(path=itempath, portal_type='resposta')"
                                               tal:condition="resposta">
                     <span tal:replace="structure python:resposta[0].getObject().resposta.output" />
-                    
+
                   </div>
                 </tal:pergunta>
 
@@ -50,7 +50,7 @@
                   <h3><span tal:content="structure python:obj.aq_parent.pergunta.output" /></h3>
                   <div class="textoAccordeon">
                     <span tal:replace="structure python:obj.resposta.output" />
-                    
+
                   </div>
                 </tal:resposta>
 
@@ -76,7 +76,7 @@
                                                           resposta python:obj.portal_catalog(path=itempath, portal_type='resposta')"
                                               tal:condition="resposta">
                     <span tal:replace="structure python:resposta[0].getObject().resposta.output" />
-                    
+
                   </div>
 
           </div>

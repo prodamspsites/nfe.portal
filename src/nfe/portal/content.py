@@ -11,6 +11,7 @@ from five import grok
 class Pergunta(Container):
     implements(IPergunta)
 
+
 @indexer(IPergunta)
 def searchableText(obj):
     return u' '.join([obj.pergunta.output])
@@ -20,6 +21,7 @@ grok.global_adapter(searchableText, name='SearchableText')
 
 class Resposta(Item):
     implements(IResposta)
+
 
 @indexer(IPergunta)
 def searchableText(obj):

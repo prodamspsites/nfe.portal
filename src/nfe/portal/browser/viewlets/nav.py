@@ -8,7 +8,7 @@ class Navegacao(ViewletBase):
     def returnSections(self):
         portal = api.portal.get()
         path = '/'.join(portal.getPhysicalPath())
-        secoes = portal.portal_catalog(path={'query' : path, 'depth': 1}, portal_type='section', sort_on='id')
+        secoes = portal.portal_catalog(path={'query': path, 'depth': 1}, portal_type='section', sort_on='id')
 
         return secoes
 
@@ -20,7 +20,7 @@ class Navegacao(ViewletBase):
             path = '/'.join(folder.getPhysicalPath())
         except:
             path = '/'.join(portal.getPhysicalPath()) + '/cidadao'
-        secoes = portal.portal_catalog(path={'query' : path, 'depth': 1}, portal_type='Folder')
+        secoes = portal.portal_catalog(path={'query': path, 'depth': 1}, portal_type='Folder')
 
         return secoes
 
@@ -71,7 +71,7 @@ class Navegacao(ViewletBase):
 
     def checkVisibility(self, obj):
         try:
-            if obj.exibir_menu_de_segundo_nivel:
+            if obj.hasProperty('exibir_menu_de_segundo_nivel'):
                 return False
             else:
                 return True

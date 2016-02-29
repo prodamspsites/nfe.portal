@@ -7,8 +7,9 @@ from plone.indexer.decorator import indexer
 
 @indexer(IPergunta)
 def PerguntaSearchableIndex(obj):
-	return u' '.join([obj.pergunta.output])
+    return u' '.join([obj.pergunta.output])
+
 
 @indexer(IResposta)
 def RespostaSearchableIndex(obj):
-	return u' '.join([obj.resposta.output])
+    return u' '.join([obj.resposta.output])

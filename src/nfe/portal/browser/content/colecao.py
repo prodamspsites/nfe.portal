@@ -48,6 +48,6 @@ class Colecao(BrowserView):
 
         search = self.context.portal_catalog(path=path, portal_type="legislacao")
 
-        items = [x for x in search if x.getObject().tipo==filtro]
+        items = [x for x in search if x.getObject().tipo == filtro]
 
         return items
