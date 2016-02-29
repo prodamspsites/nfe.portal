@@ -1,0 +1,96 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+<body>
+
+<metal:content-core fill-slot="content-core">
+<metal:block use-macro="context/standard_view/macros/content-core">
+
+    <metal:entries fill-slot="entries">
+    <tal:filtro>
+      <div id="filtraConteudo">
+        <form action="http://localhost:8080/Plone/@@search" tal:attributes="action python:'/'.join(context.getPhysicalPath())">
+
+          <div>
+            <label for="filtrarLegislacao">Filtrar legislação</label>
+
+            <input name="SearchableText" type="text" size="18" title="Filtrar Legislação" placeholder="Filtrar Legislação" class="filtrarLegislacao" id="filtrarLegislacao" />
+            <input class="filtrarLegislacaoButton" type="submit" value="Filtrar" />
+
+          </div>
+        </form>
+
+
+      </div>
+    </tal:filtro>
+
+    <tal:filtro condition="view/Filtro">
+      <div class="divAccordeon">
+        <tal:items define="items view/getFilteredContent" repeat="item items">
+
+            <div class="tileItem visualIEFloatFix"
+                 tal:define="obj item/getObject">
+
+                <tal:pergunta  tal:condition="python:item.portal_type=='pergunta'">
+                  <h3><span tal:content="structure python:obj.pergunta.output" /></h3>
+                  <div class="textoAccordeon" tal:define="itempath python:'/'.join(obj.getPhysicalPath());
+                                                          resposta python:obj.portal_catalog(path=itempath, portal_type='resposta')"
+                                              tal:condition="resposta">
+                    <span tal:replace="structure python:resposta[0].getObject().resposta.output" />
+                    
+                  </div>
+                </tal:pergunta>
+
+                <tal:resposta  tal:condition="python:item.portal_type=='resposta'">
+                  <h3><span tal:content="structure python:obj.aq_parent.pergunta.output" /></h3>
+                  <div class="textoAccordeon">
+                    <span tal:replace="structure python:obj.resposta.output" />
+                    
+                  </div>
+                </tal:resposta>
+
+
+                <div class="visualClear"><!-- --></div>
+            </div>
+
+        </tal:items>
+      </div>
+    </tal:filtro>
+
+    <tal:notFiltro condition="not:view/Filtro">
+      <div class="divAccordeon">
+        <metal:block use-macro="context/standard_view/macros/entries">
+        <metal:entry fill-slot="entry">
+
+         <div class="tileItem visualIEFloatFix"
+               tal:define="obj item/getObject"
+               tal:condition="python:item.portal_type=='pergunta'">
+
+                  <h3><span tal:content="structure python:item.getObject().pergunta.output" /></h3>
+                  <div class="textoAccordeon" tal:define="itempath python:'/'.join(obj.getPhysicalPath());
+                                                          resposta python:obj.portal_catalog(path=itempath, portal_type='resposta')"
+                                              tal:condition="resposta">
+                    <span tal:replace="structure python:resposta[0].getObject().resposta.output" />
+                    
+                  </div>
+
+          </div>
+
+
+        </metal:entry>
+        </metal:block>
+      </div>
+    </tal:notFiltro>
+
+    </metal:entries>
+
+</metal:block>
+</metal:content-core>
+
+</body>
+</html>

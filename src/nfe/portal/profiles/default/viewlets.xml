@@ -4,9 +4,14 @@
     <viewlet name="nfe.footer" before="doormat.footer"/>
   </order>
 
+  <order manager="plone.abovecontenttitle" skinname="*">
+    <viewlet name="nfe.footer" before="doormat.footer"/>
+  </order>
+
   <order manager="plone.portalheader" skinname="*">
     <viewlet name="nfe.logo.principal"/>
     <viewlet name="nfe.logo.secundario"/>
+    <viewlet name="nfe.navegacao.horizontal"/>
     <viewlet name="nfe.reclamacoes"/>
     <viewlet name="nfe.acesso.mobile"/>
   </order>

@@ -1,0 +1,117 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+<body>
+
+<metal:content-core fill-slot="content-core">
+<metal:block use-macro="context/standard_view/macros/content-core">
+
+    <metal:entries fill-slot="entries">
+    <tal:filtro>
+      <div id="filtraConteudo">
+        <form action="http://localhost:8080/Plone/@@search" tal:attributes="action python:'/'.join(context.getPhysicalPath())">
+
+          <div>
+            <label for="filtrarLegislacao">Filtrar legislação</label>
+
+            <select class="filtrarLegislacao" name="filtrarLegislacao" id="filtrarLegislacao">
+              <option selected value="Toda a legislação">Toda a legislação</option>
+              <option value="Lei">Leis</option>
+              <option value="Decreto">Decretos</option>
+              <option value="Portaria">Portarias</option>
+              <option value="Instrumento Normativo">Instrumentos Normativos</option>
+            </select>
+            <input class="filtrarLegislacaoButton" type="submit" value="Filtrar" />
+
+          </div>
+        </form>
+
+
+      </div>
+    </tal:filtro>
+
+    <tal:filtro condition="view/FiltroLegislacao">
+      <tal:items define="items view/getLegislacao" repeat="item items">
+          <h3 tal:define="filtro view/FiltroLegislacao" tal:content="string:Foram encontrados ${repeat/item/length} resultados para o termo ${filtro}" />
+
+          <div class="tileItem visualIEFloatFix"
+               tal:define="obj item/getObject"
+               tal:condition="python:item.portal_type=='legislacao'">
+
+              <h2 class="tileHeadline" metal:define-macro="listitem">
+                  <a href="#"
+                     class="summary url"
+                     tal:attributes="href python:item.getObject().absolute_url();"
+                     tal:content="item/Title">
+                      Item Title
+                  </a>
+              </h2>
+
+              <p class="tileBody">
+                  <span class="description" tal:content="item/Description">
+                      description
+                  </span>
+              </p>
+
+              <p class="tileFooter" tal:define="item item/getObject">
+                  <a href=""
+                     tal:attributes="href python:'/'.join(item.getPhysicalPath())+'/@@download/file/'+item.file.filename">
+                  <span tal:define="mtype python:item.file.contentType.split('/')[1].upper()" tal:content="string:Baixar ${mtype}" />
+                  </a>
+              </p>
+
+              <div class="visualClear"><!-- --></div>
+          </div>
+
+      </tal:items>
+    </tal:filtro>
+
+    <tal:notFiltro condition="not:view/FiltroLegislacao">
+      <metal:block use-macro="context/standard_view/macros/entries">
+      <metal:entry fill-slot="entry">
+
+          <div class="tileItem visualIEFloatFix"
+               tal:define="obj item/getObject"
+               tal:condition="python:item.portal_type=='legislacao'">
+
+              <h2 class="tileHeadline" metal:define-macro="listitem">
+                  <a href="#"
+                     class="summary url"
+                     tal:attributes="href python:obj.absolute_url()+'/view'"
+                     tal:content="item/Title">
+                      Item Title
+                  </a>
+              </h2>
+
+              <p class="tileBody" tal:condition="item_description">
+                  <span class="description" tal:content="item_description">
+                      description
+                  </span>
+              </p>
+
+              <p class="tileFooter">
+                  <a href=""
+                     tal:attributes="href python:'/'.join(item.getPhysicalPath())+'/@@download/file/'+item.file.filename">
+                  <span tal:define="mtype python:item.file.contentType.split('/')[1].upper()" tal:content="string:Baixar ${mtype}" />
+                  </a>
+              </p>
+
+              <div class="visualClear"><!-- --></div>
+          </div>
+
+      </metal:entry>
+      </metal:block>
+    </tal:notFiltro>
+
+    </metal:entries>
+
+</metal:block>
+</metal:content-core>
+
+</body>
+</html>

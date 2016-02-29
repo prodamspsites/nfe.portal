@@ -11,4 +11,36 @@
       permission="zope2.View"
     />
 
+    <browser:page
+      name="section_view"
+      for="*"
+      class=".secao.SectionView"
+      template="templates/section_view.pt"
+      permission="zope2.View"
+    />
+
+    <browser:page
+      name="arquivos_view"
+      permission="zope2.View"
+      for="plone.app.contenttypes.interfaces.ICollection"
+      template="templates/arquivos.pt"
+      />
+
+    <browser:page
+      name="duvidas_view"
+      permission="zope2.View"
+      for="plone.app.contenttypes.interfaces.ICollection"
+      template="templates/duvidas.pt"
+      class=".colecao.Colecao"
+      />
+
+
+    <browser:page
+      name="legislacao_view"
+      permission="zope2.View"
+      for="plone.app.contenttypes.interfaces.ICollection"
+      template="templates/legislacao.pt"
+      class=".colecao.Colecao"
+      />
+
 </configure>
