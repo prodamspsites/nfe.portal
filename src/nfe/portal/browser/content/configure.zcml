@@ -43,4 +43,12 @@
       class=".colecao.Colecao"
       />
 
+    <browser:page
+      name="noticias_view"
+      permission="zope2.View"
+      for="plone.app.contenttypes.interfaces.ICollection"
+      template="templates/noticias.pt"
+      class=".colecao.Noticias"
+      />
+
 </configure>
