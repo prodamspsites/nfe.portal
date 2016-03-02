@@ -22,6 +22,7 @@
             <input name="SearchableText" type="text" size="18" title="Localize uma dúvida" placeholder="Localize uma dúvida" class="filtrarLegislacao" id="filtrarLegislacao" />
             <input class="filtrarLegislacaoButton" type="submit" value="Filtrar" />
 
+
           </div>
         </form>
 
@@ -33,13 +34,12 @@
       <div class="divAccordeon">
         <tal:items define="items view/getFilteredContent" repeat="item items">
             <h2 tal:condition="repeat/item/start" tal:define="filtro view/FiltroDuvida" tal:content="string:Foram encontrados ${repeat/item/length} resultados para o termo ${filtro}" />
-            <div class="tileItem visualIEFloatFix"
-                 tal:define="obj item/getObject">
+            <div class="tileItem visualIEFloatFix">
 
                 <tal:pergunta  tal:condition="python:item.portal_type=='pergunta'">
-                  <h3><span tal:content="structure python:obj.pergunta.output" /></h3>
-                  <div class="textoAccordeon" tal:define="itempath python:'/'.join(obj.getPhysicalPath());
-                                                          resposta python:obj.portal_catalog(path=itempath, portal_type='resposta')"
+                  <h3><span tal:content="structure python:item.pergunta.output" /></h3>
+                  <div class="textoAccordeon" tal:define="itempath python:'/'.join(item.getPhysicalPath());
+                                                          resposta python:item.portal_catalog(path=itempath, portal_type='resposta')"
                                               tal:condition="resposta">
                     <span tal:replace="structure python:resposta[0].getObject().resposta.output" />
 
