@@ -68,7 +68,9 @@ class Colecao(BrowserView):
         return items
 
     def isSAT(self, obj):
-        if 'sat-iss' in obj.getPhysicalPath():
+        isSat = 'sat-iss' in obj.getPhysicalPath()
+        contextPath = 'sat-iss' in self.context.getPhysicalPath()
+        if isSat and not contextPath:
             return 'sat-iss'
         else:
             return False
