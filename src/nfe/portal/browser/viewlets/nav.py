@@ -71,7 +71,7 @@ class Navegacao(ViewletBase):
 
     def checkVisibility(self, obj):
         try:
-            if obj.hasProperty('exibir_menu_de_segundo_nivel'):
+            if obj.hasProperty('segundoNivel'):
                 return False
             else:
                 return True
