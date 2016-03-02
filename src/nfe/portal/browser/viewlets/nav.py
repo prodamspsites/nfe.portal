@@ -24,6 +24,13 @@ class Navegacao(ViewletBase):
 
         return secoes
 
+    def isActive(self, obj):
+        context = self.context
+        if obj == context:
+            return True
+        else:
+            return False
+
     def getSectionID(self):
         try:
             return self.context.secaoID
