@@ -57,6 +57,7 @@
                     SAT-ISS
                   </div>
                 </tal:isSat>
+                <div class="visualClear"><!----></div>
               </div>
 
               <p class="tileBody">
@@ -100,6 +101,7 @@
                     SAT-ISS
                   </div>
                 </tal:isSat>
+                <div class="visualClear"><!----></div>
               </div>
 
               <p class="tileBody" tal:condition="item_description">
