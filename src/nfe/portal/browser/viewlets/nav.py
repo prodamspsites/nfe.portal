@@ -72,7 +72,7 @@ class Navegacao(ViewletBase):
     def getSegundoNivel(self, obj):
         try:
             path = obj.currentPath
-            return obj.portal_catalog(path={'query': path, 'depth': 2})
+            return obj.portal_catalog(path={'query': path, 'depth': 1})
         except:
             return False
 

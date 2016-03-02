@@ -14,5 +14,6 @@
     <viewlet name="nfe.navegacao.horizontal"/>
     <viewlet name="nfe.reclamacoes"/>
     <viewlet name="nfe.acesso.mobile"/>
+    <viewlet name="nfe.alertas"/>
   </order>
 </object>

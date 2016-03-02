@@ -57,6 +57,14 @@
         template="templates/navegacao_horizontal.pt"
     />
 
+    <browser:viewlet
+        name="nfe.alertas"
+        manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
+        class=".alertas.Alertas"
+        permission="zope2.View"
+        layer="nfe.portal.interfaces.IProdamPortal"
+        template="templates/alertas.pt"
+    />
 
     <browser:viewlet
         name="nfe.navegacao.secundaria"
