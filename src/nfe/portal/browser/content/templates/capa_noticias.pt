@@ -20,8 +20,8 @@
 
             <tal:hasImage condition="python:item.image">
                <div tal:define="scales python:item.getObject().restrictedTraverse('@@images');
-                                imageLarge python:scales.scale('image', width=340, height=195)">
-                  <img tal:attributes="src imageLarge/url; alt item/Title;" class="imgHomeNoticias" />
+                                imageLarge python:scales.scale('image', width=340, height=145)">
+                  <img tal:attributes="src imageLarge/url; alt item/Title;" />
               </div>
              </tal:hasImage>
                 <time tal:define="date obj/EffectiveDate;
