@@ -26,7 +26,8 @@ Makefile
 parts/
 src/collective.cover/
 src/collective.transmogrifier/
-src/prodam.tema
+src/nfe.tema
+src/nfe.portal
 src/prodam.tiles
 src/prodam.secoes
 src/nfe.tema
