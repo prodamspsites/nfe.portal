@@ -2,6 +2,14 @@
 
 from Products.Five import BrowserView
 from plone import api
+from DateTime import DateTime
+
+
+class Noticias(BrowserView):
+    def getDate(self, date):
+        data = DateTime(date).strftime('%d/%m/%Y')
+        hora = DateTime(date).strftime('%H:%M')
+        return data + ' ás ' + hora
 
 
 class Colecao(BrowserView):

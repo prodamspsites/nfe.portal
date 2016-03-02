@@ -18,6 +18,8 @@
   <element value="duvidas_view"/>
   <element value="legislacao_view"/>
   <element value="arquivos_view"/>
+  <element value="noticias_view"/>
+
  </property>
  <property name="default_view_fallback">False</property>
  <property
