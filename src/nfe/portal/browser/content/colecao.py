@@ -44,6 +44,13 @@ class Colecao(BrowserView):
         except:
             return False
 
+    def FiltroDuvida(self):
+        try:
+            filtro = self.request.form['SearchableText']
+            return filtro
+        except:
+            return False
+
     def getLegislacao(self):
         portal = api.portal.get()
         secao = self.context.secaoID
@@ -59,3 +66,9 @@ class Colecao(BrowserView):
         items = [x for x in search if x.getObject().tipo == filtro]
 
         return items
+
+    def isSAT(self, obj):
+        if 'sat-iss' in obj.getPhysicalPath():
+            return 'sat-iss'
+        else:
+            return False

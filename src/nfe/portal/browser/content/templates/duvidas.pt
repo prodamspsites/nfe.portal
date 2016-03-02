@@ -17,9 +17,9 @@
         <form action="http://localhost:8080/Plone/@@search" tal:attributes="action python:'/'.join(context.getPhysicalPath())">
 
           <div>
-            <label for="filtrarLegislacao">Filtrar legislação</label>
+            <label for="filtrarLegislacao">Localize uma dúvida</label>
 
-            <input name="SearchableText" type="text" size="18" title="Filtrar Legislação" placeholder="Filtrar Legislação" class="filtrarLegislacao" id="filtrarLegislacao" />
+            <input name="SearchableText" type="text" size="18" title="Localize uma dúvida" placeholder="Localize uma dúvida" class="filtrarLegislacao" id="filtrarLegislacao" />
             <input class="filtrarLegislacaoButton" type="submit" value="Filtrar" />
 
           </div>
@@ -32,7 +32,7 @@
     <tal:filtro condition="view/Filtro">
       <div class="divAccordeon">
         <tal:items define="items view/getFilteredContent" repeat="item items">
-
+            <h2 tal:condition="repeat/item/start" tal:define="filtro view/FiltroDuvida" tal:content="string:Foram encontrados ${repeat/item/length} resultados para o termo ${filtro}" />
             <div class="tileItem visualIEFloatFix"
                  tal:define="obj item/getObject">
 

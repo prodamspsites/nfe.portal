@@ -37,20 +37,27 @@
 
     <tal:filtro condition="view/FiltroLegislacao">
       <tal:items define="items view/getLegislacao" repeat="item items">
-          <h3 tal:define="filtro view/FiltroLegislacao" tal:content="string:Foram encontrados ${repeat/item/length} resultados para o termo ${filtro}" />
+          <h3 tal:condition="repeat/item/start" tal:define="filtro view/FiltroLegislacao" tal:content="string:Foram encontrados ${repeat/item/length} resultados para o termo ${filtro}" />
 
           <div class="tileItem visualIEFloatFix"
                tal:define="obj item/getObject"
                tal:condition="python:item.portal_type=='legislacao'">
 
-              <h2 class="tileHeadline" metal:define-macro="listitem">
-                  <a href="#"
-                     class="summary url"
-                     tal:attributes="href python:item.getObject().absolute_url();"
-                     tal:content="item/Title">
-                      Item Title
-                  </a>
-              </h2>
+              <div class='legislacao-titulo'>
+                <h2 class="tileHeadline" metal:define-macro="listitem">
+                    <a href="#"
+                       class="summary url"
+                       tal:attributes="href python:item.getObject().absolute_url();"
+                       tal:content="item/Title">
+                        Item Title
+                    </a>
+                </h2>
+                <tal:isSat condition="python:view.isSAT(obj)">
+                  <div class="sat-iss">
+                    SAT-ISS
+                  </div>
+                </tal:isSat>
+              </div>
 
               <p class="tileBody">
                   <span class="description" tal:content="item/Description">
@@ -79,14 +86,21 @@
                tal:define="obj item/getObject"
                tal:condition="python:item.portal_type=='legislacao'">
 
-              <h2 class="tileHeadline" metal:define-macro="listitem">
-                  <a href="#"
-                     class="summary url"
-                     tal:attributes="href python:obj.absolute_url()+'/view'"
-                     tal:content="item/Title">
-                      Item Title
-                  </a>
-              </h2>
+              <div class='legislacao-titulo'>
+                <h2 class="tileHeadline" metal:define-macro="listitem">
+                    <a href="#"
+                       class="summary url"
+                       tal:attributes="href python:obj.absolute_url()+'/view'"
+                       tal:content="item/Title">
+                        Item Title
+                    </a>
+                </h2>
+                <tal:isSat condition="python:view.isSAT(obj)">
+                  <div class="sat-iss">
+                    SAT-ISS
+                  </div>
+                </tal:isSat>
+              </div>
 
               <p class="tileBody" tal:condition="item_description">
                   <span class="description" tal:content="item_description">
