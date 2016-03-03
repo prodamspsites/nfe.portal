@@ -68,10 +68,10 @@
               </p>
 
               <p class="tileFooter" tal:define="item item/getObject">
-                  <a href=""
+                  <span
                      tal:attributes="href python:'/'.join(item.getPhysicalPath())+'/@@download/file/'+item.file.filename" class="linkDownloadLeg">
-                  <span tal:define="mtype python:item.file.contentType.split('/')[1].upper()" tal:content="string:Baixar ${mtype}" class="btnDownloadLeg" />
-                  </a>
+                  <a href="" tal:define="mtype python:item.file.contentType.split('/')[1].upper()" tal:content="string:Baixar ${mtype}" class="btnDownloadLeg" />
+                  </span>
               </p>
 
               <div class="visualClear"><!-- --></div>
@@ -112,10 +112,10 @@
               </p>
 
               <p class="tileFooter">
-                  <a href=""
+                  <span
                      tal:attributes="href python:'/'.join(item.getPhysicalPath())+'/@@download/file/'+item.file.filename" class="linkDownloadLeg">
-                  <span tal:define="mtype python:item.file.contentType.split('/')[1].upper()" tal:content="string:Baixar ${mtype}" class="btnDownloadLeg" />
-                  </a>
+                  <a tal:define="mtype python:item.file.contentType.split('/')[1].upper()" tal:content="string:Baixar ${mtype}" class="btnDownloadLeg" />
+                  </span>
               </p>
 
 
