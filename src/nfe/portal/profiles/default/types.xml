@@ -6,4 +6,5 @@
  <object name="legislacao" meta_type="Dexterity FTI"/>
  <object name="pergunta" meta_type="Dexterity FTI"/>
  <object name="resposta" meta_type="Dexterity FTI"/>
+ <object name="alerta" meta_type="Dexterity FTI"/>
 </object>

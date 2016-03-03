@@ -17,10 +17,10 @@ class Navegacao(ViewletBase):
         try:
             secao = self.context.secaoID
             folder = portal[secao]
-            path = '/'.join(folder.getPhysicalPath())
         except:
             path = '/'.join(portal.getPhysicalPath()) + '/cidadao'
-        secoes = portal.portal_catalog(path={'query': path, 'depth': 1}, portal_type='Folder')
+            folder = portal.restrictedTraverse(path)
+        secoes = folder.listFolderContents(contentFilter={"portal_type": "Folder"})
 
         return secoes
 
@@ -71,8 +71,8 @@ class Navegacao(ViewletBase):
 
     def getSegundoNivel(self, obj):
         try:
-            path = obj.currentPath
-            return obj.portal_catalog(path={'query': path, 'depth': 1})
+            folder = obj.restrictedTraverse(obj.currentPath)
+            return folder.getFolderContents()
         except:
             return False
 
