@@ -21,7 +21,7 @@
 
             <input name="SearchableText" type="text" size="18" title="Localize uma dúvida" placeholder="Localize uma dúvida" class="filtrarLegislacao" id="filtrarLegislacao" />
             <input class="filtrarLegislacaoButton" type="submit" value="Filtrar" />
-
+            <a class="btnLimparFiltro" tal:condition="view/FiltroDuvida" tal:attributes="href python:context.absolute_url()">Limpar Filtro</a>
 
           </div>
         </form>
