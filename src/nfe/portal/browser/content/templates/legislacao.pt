@@ -68,8 +68,8 @@
 
               <p class="tileFooter" tal:define="item item/getObject">
                   <a href=""
-                     tal:attributes="href python:'/'.join(item.getPhysicalPath())+'/@@download/file/'+item.file.filename">
-                  <span tal:define="mtype python:item.file.contentType.split('/')[1].upper()" tal:content="string:Baixar ${mtype}" />
+                     tal:attributes="href python:'/'.join(item.getPhysicalPath())+'/@@download/file/'+item.file.filename" class="linkDownloadLeg">
+                  <span tal:define="mtype python:item.file.contentType.split('/')[1].upper()" tal:content="string:Baixar ${mtype}" class="btnDownloadLeg" />
                   </a>
               </p>
 
@@ -116,6 +116,7 @@
                   <span tal:define="mtype python:item.file.contentType.split('/')[1].upper()" tal:content="string:Baixar ${mtype}" class="btnDownloadLeg" />
                   </a>
               </p>
+
 
               <div class="visualClear"><!-- --></div>
           </div>
