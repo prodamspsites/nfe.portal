@@ -51,4 +51,12 @@
       class=".colecao.Noticias"
       />
 
+    <browser:page
+      name="busca"
+      class="plone.app.search.browser.Search"
+      permission="zope2.View"
+      for="*"
+      template="templates/search.pt"
+      />
+
 </configure>
