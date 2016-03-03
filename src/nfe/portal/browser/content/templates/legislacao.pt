@@ -27,6 +27,7 @@
               <option value="Instrumento Normativo">Instrumentos Normativos</option>
             </select>
             <input class="filtrarLegislacaoButton" type="submit" value="Filtrar" />
+            <a class="btnLimparFiltro" tal:condition="view/FiltroLegislacao" tal:attributes="href python:context.absolute_url()">Limpar Filtro</a>
 
           </div>
         </form>
