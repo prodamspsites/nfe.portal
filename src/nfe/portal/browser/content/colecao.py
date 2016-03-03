@@ -35,6 +35,14 @@ class Colecao(BrowserView):
 
         items = searchPergunta + searchResposta
 
+        items = [x.getObject() for x in items]
+
+        if searchPergunta and searchResposta:
+            lista1 = [x.getObject() for x in searchPergunta]
+            lista2 = [x.getObject() for x in searchResposta if x.getObject().aq_parent not in lista1]
+
+            items = lista1 + lista2
+
         return items
 
     def FiltroLegislacao(self):
