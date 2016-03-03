@@ -16,4 +16,7 @@
     <viewlet name="nfe.acesso.mobile"/>
     <viewlet name="nfe.alertas"/>
   </order>
+  <hidden manager="plone.belowcontenttitle" skinname="*" remove="True" purge="True">
+  <viewlet name="plone.belowcontenttitle.documentbyline" />
+  </hidden>
 </object>

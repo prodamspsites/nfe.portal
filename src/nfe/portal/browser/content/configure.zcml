@@ -44,10 +44,10 @@
       />
 
     <browser:page
-      name="noticias_view"
+      name="capa_noticias_view"
       permission="zope2.View"
       for="plone.app.contenttypes.interfaces.ICollection"
-      template="templates/noticias.pt"
+      template="templates/capa_noticias.pt"
       class=".colecao.Noticias"
       />
 

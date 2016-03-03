@@ -17,25 +17,27 @@
             <h1 tal:content="context/Title | nothing">Template de notícias</h1>
             <h2 tal:content="context/Description | nothing">Descrição</h2>
             <div class="noticias_media">
-AAAAAAAAAAAAAAAAAAAAAAAA
               <tal:published tal:define="wtool context/portal_workflow;
                                          state context/review_state | python: wtool.getInfoFor(context, 'review_state', '')"
-                             tal:condition="python:state == 'published'">BBBBBBBBBBBBBBBBBBBBBBBBBB
+                             tal:condition="python:state == 'published'">
                 <time tal:define="date context/EffectiveDate;
                                   data python:DateTime(date).strftime('%d/%m/%Y');
                                   hora python:DateTime(date).strftime('%H:%M')"
-                      tal:content="python:hora + ' às ' + data" />
+                      tal:content="python:hora + ' às ' + data"
+                />
                   <tal:modified tal:condition="python: context.EffectiveDate() != context.ModificationDate()">
-                    - Atualizado às <span tal:define="mDate context/ModificationDate;
-                                                      mData python:DateTime(mDate).strftime('%d/%m/%Y');
-                                                      mHora python:DateTime(mDate).strftime('%H:%M')"
-                                          tal:replace="python:mHora + ' às ' + mData" />
                   </tal:modified>
               </tal:published>
 
               <div class="autor">Por
                 <strong tal:content="context/autor | string:Redação" />
               </div>
+              <tal:hasImage condition="python:context.image">
+                <div tal:define="scales python:context.restrictedTraverse('@@images');
+                                  imageLarge python:scales.scale('image', width=705, height=400)">
+                  <img tal:attributes="src imageLarge/url;" />
+                </div>
+              </tal:hasImage>
             </div>
           </header>
           <div class="contentBody" tal:define="texto context/text/raw | nothing">
