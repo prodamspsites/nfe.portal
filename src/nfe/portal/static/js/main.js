@@ -9,6 +9,15 @@ $(document).ready(function(){
       pager: 'short'
     });
 
+    $('.bxsliderAlerta').bxSlider({
+       controls: true,
+        nextText: 'Next',
+        prevText: 'Prev',
+        pager:false,
+        infiniteLoop: false,
+        hideControlOnEnd:true
+    });
+
     //ACCORDEON
     $('.divAccordeon .textoAccordeon').hide();
     $('.divAccordeon h3').click(function(){
