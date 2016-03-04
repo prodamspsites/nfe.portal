@@ -38,8 +38,6 @@
                     <h3 tal:content="obj/Title">Titulo</h3>
                     <p tal:content="obj/Description">
                     </p>
-                    <a href="#" title="cotinuar lendo" class="btnContinuar"
-                       tal:attributes="href obj/url">Clique aqui</a>
                   </div>
                 </li>
 
