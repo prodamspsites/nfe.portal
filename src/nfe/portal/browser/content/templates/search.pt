@@ -60,14 +60,14 @@
                 <h1 class="documentFirstHeading"
                     i18n:translate=""
                     tal:condition="not:st">
-                    AQUIIIIIIIIIIIIIIIII
+                    Search results
                 </h1>
                 <h1 class="documentFirstHeading"
                     i18n:translate=""
                     tal:condition="st">
                     Search results for
                     <strong id="search-term" tal:content="st" i18n:name="term">
-                        AQUIIIIIIIIIIIIIIIII
+                        Search Term
                     </strong>
                 </h1>
 
@@ -103,15 +103,6 @@
 
                     <dl class="actionMenu deactivated"
                         tal:attributes="class python:view.show_advanced_search() and 'actionMenu activated' or 'actionMenu deactivated'">
-
-                      <dt class="actionMenuHeader">
-                          <a href="#"
-                             tal:attributes="href view/advanced_search_trigger"
-                             id="search-filter-toggle"
-                             i18n:translate="narrow_search_options">
-                              Filter the results.
-                          </a>
-                      </dt>
                       <dd class="actionMenuContent">
                           <div id="search-filter" i18n:domain="plone">
 
@@ -234,25 +225,6 @@
                       </dd>
 
                     </dl>
-
-                    <span id="searchResultsSort">
-                      <span i18n:translate="sort_by">Sort by</span>
-                          <span id="sorting-options">
-                              <metal:sorting define-macro="sorting">
-                                  <tal:block repeat="item view/sort_options">
-                                      <tal:item define="selected item/selected">
-                                      <a data-sort=""
-                                         tal:condition="not:selected"
-                                         tal:content="item/title"
-                                         tal:attributes="href item/url;
-                                                         data-sort python:item.sortkey and item.sortkey or None"></a>
-                                      <strong tal:condition="selected" tal:content="item/title"></strong>
-                                      <span tal:condition="not:repeat/item/end">&middot;</span>
-                                      </tal:item>
-                                  </tal:block>
-                              </metal:sorting>
-                          </span>
-                    </span>
                 </div>
 
                 <div class="visualClear"><!-- --></div>
@@ -274,6 +246,32 @@
                                                    show_about python:not isAnon or allowAnonymousViewAbout;">
                           <dl class="searchResults">
                               <tal:results repeat="item batch">
+                              <tal:pergunta tal:define="type item/portal_type">
+                                <div tal:condition="item/portal_type">
+                                 <!-- Tratativa de perguntas e respostas -->
+                                 <span tal:condition="python:item.portal_type=='pergunta'">
+                                      <span tal:replace="structure python:item.getObject().pergunta.output" />
+                                      <tal:resp tal:define="respostas python: item.getChildNodes()" >
+                                          <tal:filhos tal:repeat="i respostas">
+                                              <span tal:replace="structure python: i.resposta.output"></span>
+                                          </tal:filhos>
+                                      </tal:resp>
+                                  </span>
+                                </div>
+
+                              </tal:pergunta>
+                              <tal:resposta  tal:condition="python:item.portal_type=='resposta'"
+                                             tal:define="obj item/getObject">
+                                <h3><span tal:content="structure python:obj.aq_parent.pergunta.output" /></h3>
+                                <div class="textoAccordeon">
+                                  <span tal:replace="structure python:obj.resposta.output" />
+                                </div>
+                              </tal:resposta>
+
+                              <!-- Busca Padrão -->
+                                    <tal:tipopadrao tal:condition="python:item.portal_type !='resposta' and
+                                                                       item.portal_type !='pergunta'">
+
                                     <dt tal:attributes="class item/ContentTypeClass">
                                       <img tal:replace="structure item/getIcon" />
                                       <a href="#"
@@ -284,74 +282,11 @@
                                          tal:content="python:item.getDataOrigin().pretty_title_or_id()" />
                                     </dt>
                                     <dd>
-                                      <span class="discreet" i18n:domain="plone"
-                                        tal:condition="show_about">
-                                        <span class="documentAuthor"
-                                            i18n:translate="label_by_author">
-                                        by
-                                            <tal:block tal:condition="item/Creator"
-                                                tal:define="author python:context.portal_membership.getMemberInfo(item.Creator())">
-                                              <a href="#"
-                                                 tal:attributes="href string:$navigation_root_url/author/${item/Creator}"
-                                                 tal:content="python:author and author['fullname'] or item.Creator()"
-                                                 tal:omit-tag="not:item/Creator"
-                                                 i18n:name="author">
-                                                Bob Dobalina
-                                              </a>
-                                            </tal:block>
-                                        </span>
-
-                                        <span tal:define="publication_date item/EffectiveDate;
-                                                          modification_date item/ModificationDate">
-
-                                            <span class="documentPublished" tal:condition="python: publication_date != 'None'">
-                                              &mdash;
-                                              <span i18n:translate="box_published">
-                                                published
-                                              </span>
-                                              <span tal:replace="python:toLocalizedTime(publication_date, long_format=0)">
-                                                August 16, 2001 at 23:35:59
-                                              </span>
-                                            </span>
-
-                                            <span class="documentModified" tal:condition="python: modification_date != publication_date">
-                                              &mdash;
-                                              <span i18n:translate="box_last_modified">
-                                                last modified
-                                              </span>
-                                              <span tal:replace="python:toLocalizedTime(modification_date, long_format=1)">
-                                                August 16, 2001 at 23:35:59
-                                              </span>
-                                            </span>
-
-                                        </span>
-
-                                        <span tal:define="categories item/Subject|nothing"
-                                              tal:condition="categories">
-                                          &mdash;
-                                          <tal:filedunder i18n:translate="">filed under:</tal:filedunder>
-                                          <span tal:repeat="category categories">
-                                            <a href=""
-                                               class="link-category"
-                                               rel="tag"
-                                               tal:content="category"
-                                               tal:attributes="href string:$navigation_root_url/@@search?Subject%3Alist=${category}">
-                                              Category
-                                            </a><tal:separator condition="not: repeat/category/end">,</tal:separator>
-                                          </span>
-                                        </span>
-                                      </span>
-                                      <div tal:content="item/CroppedDescription">
-                                        Cropped description
-                                      </div>
 
                                       <cite class="documentLocation link-location"
                                             tal:define="breadcrumbs python: view.breadcrumbs(item);
                                                         is_rtl context/@@plone_portal_state/is_rtl;"
                                             tal:condition='breadcrumbs'>
-                                          <span i18n:translate="text_searchitem_location">
-                                              Located in
-                                          </span>
                                           <span tal:repeat="crumb breadcrumbs"
                                                 tal:attributes="dir python:is_rtl and 'rtl' or 'ltr';">
                                               <tal:item tal:define="is_last repeat/crumb/end;
@@ -373,6 +308,7 @@
                                       </cite>
 
                                     </dd>
+                                    </tal:tipopadrao>
                               </tal:results>
                           </dl>
                           <div metal:use-macro="context/batch_macros/macros/navigation" />

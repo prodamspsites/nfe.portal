@@ -7,6 +7,9 @@
   <order manager="plone.abovecontenttitle" skinname="*">
     <viewlet name="nfe.footer" before="doormat.footer"/>
   </order>
+    <order manager="plone.abovecontenttitle" skinname="*">
+    <viewlet name="nfe.footer" before="doormat.footer"/>
+  </order>
 
   <order manager="plone.portalheader" skinname="*">
     <viewlet name="nfe.logo.principal"/>
@@ -15,7 +18,12 @@
     <viewlet name="nfe.reclamacoes"/>
     <viewlet name="nfe.acesso.mobile"/>
     <viewlet name="nfe.alertas"/>
+    <viewlet name="nfe.searchbox"/>
+
   </order>
+  <hidden manager="plone.portalheader" skinname="*" remove="True" purge="True">
+      <viewlet name="plone.searchbox" />
+  </hidden>
   <hidden manager="plone.belowcontenttitle" skinname="*" remove="True" purge="True">
   <viewlet name="plone.belowcontenttitle.documentbyline" />
   </hidden>

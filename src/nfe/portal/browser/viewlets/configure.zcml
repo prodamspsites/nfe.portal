@@ -74,6 +74,13 @@
         layer="nfe.portal.interfaces.IProdamPortal"
         template="templates/navegacao_secundaria.pt"
     />
+    <browser:viewlet
+        name="nfe.searchbox"
+        manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
+        class="plone.app.layout.viewlets.common.SearchBoxViewlet"
+        permission="zope2.View"
+        template="templates/searchbox.pt"
+        />
 
 </configure>
 
