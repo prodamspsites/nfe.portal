@@ -39,7 +39,7 @@
         <input type="hidden" name="advanced_search" value="False" />
         <input type="hidden" name="sort_on" value="" />
 
-        <fieldset id="search-field" i18n:domain="plone" class="noborder">
+        <!--<fieldset id="search-field" i18n:domain="plone" class="noborder">
             <input class="searchPage"
                    name="SearchableText"
                    type="text"
@@ -52,7 +52,7 @@
                    type="submit"
                    value="Search"
                    i18n:attributes="value label_search;"/>
-        </fieldset>
+        </fieldset>-->
 
         <div class="row">
 
@@ -246,34 +246,43 @@
                                                    show_about python:not isAnon or allowAnonymousViewAbout;">
                           <dl class="searchResults">
                               <tal:results repeat="item batch">
-                              <tal:pergunta tal:define="type item/portal_type">
-                                <div tal:condition="item/portal_type">
-                                 <!-- Tratativa de perguntas e respostas -->
-                                 <span tal:condition="python:item.portal_type=='pergunta'">
-                                      <span tal:replace="structure python:item.getObject().pergunta.output" />
-                                      <tal:resp tal:define="respostas python: item.getChildNodes()" >
-                                          <tal:filhos tal:repeat="i respostas">
-                                              <span tal:replace="structure python: i.resposta.output"></span>
-                                          </tal:filhos>
-                                      </tal:resp>
-                                  </span>
+                              <div tal:condition="python:item.portal_type=='pergunta'" class="divAccordeon">
+                                <h3>
+                                  <tal:pergunta tal:define="type item/portal_type">
+                                    <div tal:condition="item/portal_type">
+                                     <!-- Tratativa de perguntas e respostas -->
+                                     <span tal:condition="python:item.portal_type=='pergunta'">
+                                          <span tal:replace="structure python:item.getObject().pergunta.output" />
+                                      </span>
+                                    </div>
+
+                                  </tal:pergunta>
+                                </h3>
+
+                                <div class="textoAccordeon">
+                                <tal:pergunta tal:define="type item/portal_type">
+                                  <tal:resp tal:define="respostas python: item.getChildNodes()" >
+                                              <tal:filhos tal:repeat="i respostas">
+                                                  <span tal:replace="structure python: i.resposta.output"></span>
+                                              </tal:filhos>
+                                          </tal:resp>
+                                  </tal:pergunta>
                                 </div>
 
-                              </tal:pergunta>
-                              <tal:resposta  tal:condition="python:item.portal_type=='resposta'"
-                                             tal:define="obj item/getObject">
-                                <h3><span tal:content="structure python:obj.aq_parent.pergunta.output" /></h3>
-                                <div class="textoAccordeon">
-                                  <span tal:replace="structure python:obj.resposta.output" />
-                                </div>
-                              </tal:resposta>
+                                <tal:resposta  tal:condition="python:item.portal_type=='resposta'"
+                                               tal:define="obj item/getObject">
+                                  <h3><span tal:content="structure python:obj.aq_parent.pergunta.output" /></h3>
+                                  <div class="textoAccordeon">
+                                    <span tal:replace="structure python:obj.resposta.output" />
+                                  </div>
+                                </tal:resposta>
+                              </div>
 
                               <!-- Busca Padrão -->
                                     <tal:tipopadrao tal:condition="python:item.portal_type !='resposta' and
                                                                        item.portal_type !='pergunta'">
 
                                     <dt tal:attributes="class item/ContentTypeClass">
-                                      <img tal:replace="structure item/getIcon" />
                                       <a href="#"
                                          tal:define="item_url item/getURL;
                                                      item_type item/PortalType"
