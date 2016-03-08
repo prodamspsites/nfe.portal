@@ -85,11 +85,11 @@
     expression="" id="modernizr.js" inline="False"
     insert-after="cookie_functions.js"/>
  <javascript authenticated="False" bundle="default" cacheable="True"
-    compression="full" conditionalcomment="" cookable="True" enabled="True"
+    compression="full" conditionalcomment="" cookable="True" enabled="False"
     expression="" id="livesearch.js" inline="False"
     insert-after="modernizr.js"/>
  <javascript authenticated="False" bundle="default" cacheable="True"
-    compression="safe" conditionalcomment="" cookable="True" enabled="True"
+    compression="safe" conditionalcomment="" cookable="True" enabled="False"
     expression="" id="++resource++search.js" inline="False"
     insert-after="livesearch.js"/>
  <javascript authenticated="False" bundle="default" cacheable="True"
