@@ -1,4 +1,5 @@
-<tal:visible tal:define="alertaCondition view/getAlertas; type python:context.portal_type=='section'"
+<tal:visible tal:define="alertaCondition view/getAlertas;
+                         type python:context.portal_type=='collective.cover.content' or context.portal_type=='section'"
              tal:condition="python:alertaCondition and type">
     <div class="informativosHome">
       <div class="wrap">
