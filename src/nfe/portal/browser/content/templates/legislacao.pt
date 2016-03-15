@@ -17,7 +17,7 @@
         <form action="http://localhost:8080/Plone/@@search" tal:attributes="action python:'/'.join(context.getPhysicalPath())">
 
           <div>
-            <label for="filtrarLegislacao">Filtrar legislação</label>
+            <label for="filtrarLegislacao">Filtrar legislação:</label>
 
             <select class="filtrarLegislacao" name="filtrarLegislacao" id="filtrarLegislacao">
               <option selected value="Toda a legislação">Toda a legislação</option>
@@ -52,12 +52,12 @@
                        tal:content="item/Title">
                         Item Title
                     </a>
+                    <tal:isSat condition="python:view.isSAT(obj)">
+                    <div class="sat-iss">
+                      <span>SAT-ISS</span>
+                    </div>
+                  </tal:isSat>
                 </h2>
-                <tal:isSat condition="python:view.isSAT(obj)">
-                  <div class="sat-iss">
-                    SAT-ISS
-                  </div>
-                </tal:isSat>
                 <div class="visualClear"><!----></div>
               </div>
 
@@ -68,11 +68,11 @@
               </p>
 
               <p class="tileFooter" tal:define="item item/getObject">
-                  <span
+              </p>
+               <span
                      tal:attributes="href python:'/'.join(item.getPhysicalPath())+'/@@download/file/'+item.file.filename" class="linkDownloadLeg">
                   <a href="" tal:define="mtype python:item.file.contentType.split('/')[1].upper()" tal:content="string:Baixar ${mtype}" class="btnDownloadLeg" />
                   </span>
-              </p>
 
               <div class="visualClear"><!-- --></div>
           </div>
@@ -96,12 +96,12 @@
                        tal:content="item/Title">
                         Item Title
                     </a>
+                    <tal:isSat condition="python:view.isSAT(obj)">
+                    <div class="sat-iss">
+                      <span>SAT-ISS</span>
+                    </div>
+                  </tal:isSat>
                 </h2>
-                <tal:isSat condition="python:view.isSAT(obj)">
-                  <div class="sat-iss">
-                    SAT-ISS
-                  </div>
-                </tal:isSat>
                 <div class="visualClear"><!----></div>
               </div>
 
@@ -112,11 +112,11 @@
               </p>
 
               <p class="tileFooter">
-                  <span
+              </p>
+              <span
                      tal:attributes="href python:'/'.join(item.getPhysicalPath())+'/@@download/file/'+item.file.filename" class="linkDownloadLeg">
                   <a tal:define="mtype python:item.file.contentType.split('/')[1].upper()" tal:content="string:Baixar ${mtype}" class="btnDownloadLeg" />
                   </span>
-              </p>
 
 
               <div class="visualClear"><!-- --></div>

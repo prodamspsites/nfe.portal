@@ -17,9 +17,9 @@
         <form action="http://localhost:8080/Plone/@@search" tal:attributes="action python:'/'.join(context.getPhysicalPath())">
 
           <div>
-            <label for="filtrarLegislacao">Localize uma dúvida</label>
+            <label for="filtrarLegislacao">Localize uma dúvida:</label>
 
-            <input name="SearchableText" type="text" size="18" title="Localize uma dúvida" placeholder="Localize uma dúvida" class="filtrarLegislacao" id="filtrarLegislacao" />
+            <input name="SearchableText" type="text" size="18" title="Digite aqui o tema de sua dúvida" placeholder="Digite aqui o tema de sua dúvida" class="filtrarLegislacao" id="filtrarLegislacao" />
             <input class="filtrarLegislacaoButton" type="submit" value="Filtrar" />
             <a class="btnLimparFiltro" tal:condition="view/FiltroDuvida" tal:attributes="href python:context.absolute_url()">Limpar Filtro</a>
 

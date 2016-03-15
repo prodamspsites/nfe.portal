@@ -35,8 +35,10 @@ $(document).ready(function(){
     $(window).scroll(function() {
         if ($(this).scrollTop() > 350) {
             $('#portal-column-two').addClass('fixo');
+            $('#portal-column-content').addClass('fixo');
         } else {
             $('#portal-column-two').removeClass('fixo');
+            $('#portal-column-content').removeClass('fixo');
         }
     });
 

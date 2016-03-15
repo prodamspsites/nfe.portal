@@ -28,7 +28,7 @@
                                     data python:view.getDate(date)"
                         tal:content="data" />
               <h2 class="destaqueTitulo" metal:define-macro="listitem">
-                  <a tal:content="obj/Title">
+                  <a href="#"  tal:attributes="href python:obj.absolute_url()" tal:content="obj/Title">
                       Item Title
                   </a>
               </h2>

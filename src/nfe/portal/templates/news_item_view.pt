@@ -20,7 +20,7 @@
                 <time tal:define="date context/EffectiveDate;
                                   data python:DateTime(date).strftime('%d/%m/%Y');
                                   hora python:DateTime(date).strftime('%H:%M')"
-                      tal:content="python:hora + ' às ' + data"
+                      tal:content="python:data + ' às ' + hora"
                 />
                   <tal:modified tal:condition="python: context.EffectiveDate() != context.ModificationDate()">
                   </tal:modified>
