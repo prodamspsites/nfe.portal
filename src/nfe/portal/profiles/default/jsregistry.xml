@@ -268,4 +268,16 @@
     id="++resource++nfe.portal/js/flipcounter/jshashtable-2.1_src.js"
     inline="False"
     insert-after="++resource++nfe.portal/js/flipcounter/jquery.numberformatter-1.2.3.js"/>
+<javascript authenticated="False" bundle="default" cacheable="True"
+    compression="safe" conditionalcomment="" cookable="True" enabled="True"
+    expression=""
+    id="++resource++nfe.portal/js/jquery.meiomask.js"
+    inline="False"
+    insert-after="++resource++nfe.portal/js/flipcounter/jquery.numberformatter-1.2.3.js"/>
+<javascript authenticated="False" bundle="default" cacheable="True"
+    compression="safe" conditionalcomment="" cookable="True" enabled="True"
+    expression=""
+    id="++resource++nfe.portal/js/wplogin.js"
+    inline="False"
+    insert-after="++resource++nfe.portal/js/jquery.meiomask.js"/>
 </object>

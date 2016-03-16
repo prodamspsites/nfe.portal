@@ -6,18 +6,18 @@
 
       <div class="divSideBarAcesso">
         <h2>Acesso ao sistema</h2>
-        <form class="acessoSistema">
+        <form class="acessoSistema" id="wploginform" method="post" name="test" action="https://nfe.prefeitura.sp.gov.br/login.aspx">
           <fieldset>
             <legend>Formulário de acesso ao sistema</legend>
-            <input type="text" class="inputAcesso" placeholder="CPF ou CNPJ" />
-            <input type="password" class="inputAcesso" placeholder="Senha" />
-            <input type="submit" value="Entrar" class="btnEntrar" />
+            <input type="text" class="inputAcesso cpf" id="j_username" name="j_username" placeholder="CPF ou CNPJ" />
+            <input type="password" id="j_password" name="j_password" class="inputAcesso senha" placeholder="Senha" />
+            <input type="submit" id="enviar" value="Entrar" class="btnEntrar" />
             <ul class="esqueciSenha">
-              <li><a href="#" title="Esqueci a senha">Esqueci a senha</a></li>
+              <li><a href="#" id="linkEsqueciSenha" title="Esqueci a senha">Esqueci a senha</a></li>
               <li class="divisaoEsquec">|</li>
-              <li><a href="#" title="Nâo sou cadastrado">Nâo sou cadastrado</a></li>
+              <li><a href="#" id="linkNaoCadastrado" title="Nâo sou cadastrado">Nâo sou cadastrado</a></li>
             </ul>
-            <a href="#" title="Acesso com certificado digital" class="btnAcessoCertificado">Acesso com certificado digital</a>
+            <a href="#" target="_blank" title="Acesso com certificado digital" id="linkCertificado" class="btnAcessoCertificado">Acesso com certificado digital</a>
           </fieldset>
         </form>
       </div>

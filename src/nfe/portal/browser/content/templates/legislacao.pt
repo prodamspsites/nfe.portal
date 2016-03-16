@@ -13,7 +13,7 @@
 
     <metal:entries fill-slot="entries">
     <tal:filtro>
-      <div id="filtraConteudo">
+      <div id="filtraConteudo" class="legislacao">
         <form action="http://localhost:8080/Plone/@@search" tal:attributes="action python:'/'.join(context.getPhysicalPath())">
 
           <div>
@@ -115,7 +115,7 @@
               </p>
               <span
                      tal:attributes="href python:'/'.join(item.getPhysicalPath())+'/@@download/file/'+item.file.filename" class="linkDownloadLeg">
-                  <a tal:define="mtype python:item.file.contentType.split('/')[1].upper()" tal:content="string:Baixar ${mtype}" class="btnDownloadLeg" />
+                  <a tal:attributes="href python:obj.absolute_url()+'/view'" tal:define="mtype python:item.file.contentType.split('/')[1].upper()" tal:content="string:Baixar ${mtype}" class="btnDownloadLeg" />
                   </span>
 
 

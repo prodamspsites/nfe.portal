@@ -13,7 +13,7 @@
 
     <metal:entries fill-slot="entries">
     <tal:filtro>
-      <div id="filtraConteudo">
+      <div id="filtraConteudo" class="faq">
         <form action="http://localhost:8080/Plone/@@search" tal:attributes="action python:'/'.join(context.getPhysicalPath())">
 
           <div>
