@@ -30,7 +30,7 @@
     </div>
 
     <div class="searchDuvidas">
-        <form action="http://localhost:8080/Plone/@@search" tal:attributes="action python:'/'.join(context.getPhysicalPath())">
+        <form action="http://localhost:8080/Plone/@@search" tal:attributes="action python:context.absolute_url())">
 
           <div>
             <p>Você também pode fazer uma busca por palavra-chave no nosso banco de informações:</p>
