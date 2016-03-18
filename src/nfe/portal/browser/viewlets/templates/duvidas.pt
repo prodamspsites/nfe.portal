@@ -32,7 +32,7 @@
     <div class="searchDuvidas">
         <form action="http://localhost:8080/Plone/@@search" tal:attributes="action python:context.absolute_url())">
 
-          <div>
+          <div class="vcTambem">
             <p>Você também pode fazer uma busca por palavra-chave no nosso banco de informações:</p>
 
             <input name="SearchableText" type="text" size="18" title="" placeholder="" class="filtrarLegislacao" id="filtrarLegislacao" />
@@ -42,7 +42,7 @@
         </form>
 
       <tal:filtro condition="view/Filtro">
-        <div class="divAccordeon">
+        <div class="divAccordeon find">
           <tal:items define="items view/getFilteredContent" repeat="item items">
               <h2 tal:condition="repeat/item/start" tal:define="filtro view/Filtro" tal:content='string:Foram encontrados ${repeat/item/length} resultados para o termo "${filtro}"' />
               <div class="tileItem visualIEFloatFix">
