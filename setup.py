@@ -44,6 +44,7 @@ setup(
     zip_safe=False,
     install_requires=[
         'nfe.tema',
+        'Products.PloneFormGen',
         'collective.cover',
         'collective.nitf',
         'sc.social.like',
