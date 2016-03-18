@@ -7,7 +7,12 @@
   <order manager="plone.abovecontenttitle" skinname="*">
     <viewlet name="nfe.footer" before="doormat.footer"/>
   </order>
-    <order manager="plone.abovecontenttitle" skinname="*">
+
+  <order manager="plone.belowcontenttitle" skinname="*">
+    <viewlet name="nfe.duvidas" />
+  </order>
+
+  <order manager="plone.abovecontenttitle" skinname="*">
     <viewlet name="nfe.footer" before="doormat.footer"/>
   </order>
 

@@ -74,6 +74,16 @@
         layer="nfe.portal.interfaces.IProdamPortal"
         template="templates/navegacao_secundaria.pt"
     />
+
+    <browser:viewlet
+        name="nfe.duvidas"
+        manager="plone.app.layout.viewlets.interfaces.IBelowContentTitle"
+        class=".duvidas.Duvidas"
+        permission="zope2.View"
+        layer="nfe.portal.interfaces.IProdamPortal"
+        template="templates/duvidas.pt"
+    />
+
     <browser:viewlet
         name="nfe.searchbox"
         manager="plone.app.layout.viewlets.interfaces.IPortalHeader"

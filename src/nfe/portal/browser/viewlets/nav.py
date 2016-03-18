@@ -20,7 +20,7 @@ class Navegacao(ViewletBase):
         except:
             path = '/'.join(portal.getPhysicalPath()) + '/cidadao'
             folder = portal.restrictedTraverse(path)
-        secoes = folder.listFolderContents(contentFilter={"portal_type": "Folder"})
+        secoes = folder.listFolderContents(contentFilter={"portal_type": ["Folder", "FormFolder"]})
 
         return secoes
 
