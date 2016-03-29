@@ -33,7 +33,7 @@ $(document).ready(function(){
 
     //SIDEBAR FIXO
     $(window).scroll(function() {
-        if ($(this).scrollTop() > 350) {
+        if ($(this).scrollTop() > 305) {
             $('#portal-column-two').addClass('fixo');
             $('#portal-column-content').addClass('fixo');
         } else {
