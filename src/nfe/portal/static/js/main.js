@@ -101,7 +101,6 @@ $(document).ready(function(){
         (function(){
             var tam = $.cookie('tamanhoLetra');
             $('body').css("font-size",tam+"px");
-            console.log("TAMANHO INICIAL",$.cookie('tamanhoLetra'));
         })();
 
         function maisFont(){
@@ -110,7 +109,6 @@ $(document).ready(function(){
             maisUm++;
             $.cookie('tamanhoLetra', maisUm,{ path: '/' });
             $('body').css("font-size",maisUm+"px");
-            console.log("MAiS",$.cookie('tamanhoLetra'));
         }
         function menosFont(){
             var tamanho = $('body').css("font-size");
