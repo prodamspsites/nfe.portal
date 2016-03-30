@@ -23,6 +23,7 @@
       name="arquivos_view"
       permission="zope2.View"
       for="plone.app.contenttypes.interfaces.ICollection"
+      class=".arquivos.ArquivosView"
       template="templates/arquivos.pt"
       />
 

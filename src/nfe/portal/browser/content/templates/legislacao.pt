@@ -58,6 +58,9 @@
                     </div>
                   </tal:isSat>
                 </h2>
+                  <time class="data" tal:define="date obj/EffectiveDate;
+                                    data python:view.getDate(date)"
+                        tal:content="data" />
                 <div class="visualClear"><!----></div>
               </div>
 
@@ -101,6 +104,10 @@
                     </div>
                   </tal:isSat>
                 </h2>
+                  <time class="data" tal:define="date obj/Date;
+                                    data python:view.getDate(date)"
+                        tal:content="data" />
+
                 <div class="visualClear"><!----></div>
               </div>
 
