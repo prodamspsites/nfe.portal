@@ -8,11 +8,14 @@ from DateTime import DateTime
 class Noticias(BrowserView):
     def getDate(self, date):
         data = DateTime(date).strftime('%d/%m/%Y')
-        hora = DateTime(date).strftime('%H:%M')
-        return data + ' às ' + hora
+        return data
 
 
 class Colecao(BrowserView):
+    def getDate(self, date):
+        data = DateTime(date).strftime('%d/%m/%Y')
+        return data
+
     def Filtro(self):
         try:
             filtro = self.request.form['SearchableText']
