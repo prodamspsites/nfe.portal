@@ -35,7 +35,12 @@
                       navigation_root_url view/navroot_url;">
 
         <div class="row">
-
+          <div id="portal-breadcrumbsBusca">
+            <p class="contentBread">
+              <span>Você está em :</span>
+              <span>Resultados da busca </span>
+            </p>
+          </div>
             <div class="cell width-full position-0">
                 <h1 class="documentFirstHeading">
                     Resultado da busca
@@ -130,7 +135,7 @@
                               <!-- Busca Padrão -->
                                     <tal:tipopadrao tal:condition="python:item.portal_type !='resposta' and
                                                                        item.portal_type !='pergunta'">
-
+                                   <div class="resultado">
                                     <dt tal:attributes="class item/ContentTypeClass">
                                       <a href="#"
                                          tal:define="item_url item/getURL;
@@ -150,12 +155,7 @@
                                               <tal:item tal:define="is_last repeat/crumb/end;
                                                                     url crumb/absolute_url;
                                                                     title crumb/Title">
-                                                  <a href="#"
-                                                     tal:omit-tag="not: url"
-                                                     tal:attributes="href url"
-                                                     tal:content="title">
-                                                      crumb
-                                                  </a>
+                                                  <span tal:content="title"/>
                                                   <span class="breadcrumbSeparator" tal:condition="not: is_last">
                                                       <tal:ltr condition="not: is_rtl">/</tal:ltr>
                                                       <tal:rtl condition="is_rtl">/</tal:rtl>
@@ -166,10 +166,13 @@
                                       </cite>
 
                                     </dd>
+                                  </div>
                                     </tal:tipopadrao>
                               </tal:results>
                           </dl>
-                          <div metal:use-macro="context/batch_macros/macros/navigation" />
+                          <div class="divPaginacao">
+                            <div metal:use-macro="context/batch_macros/macros/navigation" />
+                        </div>div>
                         </metal:results>
                     </div>
                 </metal:searchresults>
