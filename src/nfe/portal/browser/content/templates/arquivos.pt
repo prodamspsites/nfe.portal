@@ -38,9 +38,8 @@
 
             <p class="tileFooter">
             </p>
-            <span
-                   tal:attributes="href python:'/'.join(item.getPhysicalPath())+'/@@download/file/'+item.file.filename" class="linkDownloadLeg">
-                <a tal:attributes="href python:item_type in use_view_action and item_url+'/view' or item_url;" href="" tal:define="mtype python:item.file.contentType.split('/')[1].upper()" tal:content="string:Baixar ${mtype}"  class="btnDownloadLeg"/>
+            <span class="linkDownloadLeg">
+                <a tal:attributes="href python:item_type in use_view_action and item_url+'/@@download/file/'+item.file.filename" href="" tal:define="mtype python:item.file.contentType.split('/')[1].upper()" tal:content="string:Baixar ${mtype}"  class="btnDownloadLeg"/>
                 </span>
 
             <div class="visualClear"><!-- --></div>
