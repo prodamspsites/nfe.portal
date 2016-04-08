@@ -169,7 +169,7 @@
                                     </tal:tipopadrao>
                               </tal:results>
                           </dl>
-                          <div metal:use-macro="context/batch_macros/macros/navigation" />
+                          <div metal:use-macro="context/nfe_macros/macros/navigation" />
                         </metal:results>
                     </div>
                 </metal:searchresults>

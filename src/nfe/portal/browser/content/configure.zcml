@@ -60,4 +60,20 @@
       template="templates/search.pt"
       />
 
+    <browser:page
+      name="nfe_macros"
+      for="*"
+      permission="zope.Public"
+      class="plone.batching.browser.BatchMacrosView"
+      template="templates/batch_macros.pt"
+      />
+
+    <browser:page
+      name="nfenavigation"
+      for="*"
+      permission="zope.Public"
+      class="plone.batching.browser.PloneBatchView"
+      template="templates/batchnavigation.pt"
+      />
+
 </configure>
