@@ -73,7 +73,7 @@
               <p class="tileFooter" tal:define="item item/getObject">
               </p>
                <span tal:attributes="href python:'/'.join(item.getObject().getPhysicalPath())+'/@@download/file/'+item.getObject().file.filename" class="linkDownloadLeg">
-                  <a href="" tal:define="mtype python:item.getObject().file.contentType.split('/')[1].upper()" tal:content="string:Baixar ${mtype}" class="btnDownloadLeg" />
+                  <a tal:attributes="href python:obj.absolute_url()+'/@@download/file/'+item.file.filename" tal:define="mtype python:item.getObject().file.contentType.split('/')[1].upper()" tal:content="string:Baixar ${mtype}" class="btnDownloadLeg" />
                   </span>
 
               <div class="visualClear"><!-- --></div>
@@ -119,8 +119,8 @@
 
               <p class="tileFooter">
               </p>
-              <span tal:attributes="href python:'/'.join(item.getPhysicalPath())+'/@@download/file/'+item.file.filename" class="linkDownloadLeg">
-                  <a tal:attributes="href python:obj.absolute_url()+'/view'" tal:define="mtype python:item.file.contentType.split('/')[1].upper()" tal:content="string:Baixar ${mtype}" class="btnDownloadLeg" />
+              <span class="linkDownloadLeg">
+                  <a tal:attributes="href python:obj.absolute_url()+'/@@download/file/'+item.file.filename" tal:define="mtype python:item.file.contentType.split('/')[1].upper()" tal:content="string:Baixar ${mtype}" class="btnDownloadLeg" />
                   </span>
 
 
