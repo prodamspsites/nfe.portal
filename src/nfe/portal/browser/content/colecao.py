@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from Products.Five import BrowserView
-from plone import api
 from DateTime import DateTime
 
 
@@ -23,30 +22,20 @@ class Colecao(BrowserView):
         except:
             return False
 
-    def getFilteredContent(self):
-        portal = api.portal.get()
-        secao = self.context.secaoID
-        path = '/'.join(portal.getPhysicalPath()) + '/' + secao
-
+    def getFilteredContent(self, items):
         try:
             filtro = self.request.form['SearchableText']
         except:
             filtro = None
 
-        searchPergunta = self.context.portal_catalog(path=path, portal_type="pergunta", SearchableText=filtro)
-        searchResposta = self.context.portal_catalog(path=path, portal_type="resposta", SearchableText=filtro)
+        filtered = []
 
-        items = searchPergunta + searchResposta
+        for i in items:
+            terms = i.getObject().pergunta.raw + i.getObject().resposta.raw
+            if filtro in terms:
+                filtered.append(i.getObject())
 
-        items = [x.getObject() for x in items]
-
-        if searchPergunta and searchResposta:
-            lista1 = [x.getObject() for x in searchPergunta]
-            lista2 = [x.getObject() for x in searchResposta if x.getObject().aq_parent not in lista1]
-
-            items = lista1 + lista2
-
-        return items
+        return filtered
 
     def FiltroLegislacao(self):
         try:
@@ -62,26 +51,19 @@ class Colecao(BrowserView):
         except:
             return False
 
-    def getLegislacao(self):
-        portal = api.portal.get()
-        secao = self.context.secaoID
-        path = '/'.join(portal.getPhysicalPath()) + '/' + secao
-
+    def getLegislacao(self, items):
         try:
             filtro = self.request.form['filtrarLegislacao']
         except:
             filtro = None
 
-        search = self.context.portal_catalog(path=path, portal_type="legislacao")
-
-        items = [x for x in search if x.getObject().tipo == filtro]
+        items = [x for x in items if x.getObject().tipo == filtro]
 
         return items
 
     def isSAT(self, obj):
         isSat = 'sat-iss' in obj.getPhysicalPath()
-        contextPath = 'sat-iss' in self.context.getPhysicalPath()
-        if isSat and not contextPath:
+        if isSat:
             return 'sat-iss'
         else:
             return False

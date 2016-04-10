@@ -20,11 +20,11 @@
 
   <metal:block fill-slot="top_slot"
     tal:define="dummy python:request.set('disable_border',1);
-      disable_column_one python:request.set('disable_plone.leftcolumn',1);
-      disable_column_two python:request.set('disable_plone.rightcolumn',1);" />
+      disable_column_one python:request.set('disable_plone.leftcolumn',1);" />
 </head>
 
 <body>
+
 
   <div id="content-core" metal:fill-slot="main">
 
@@ -179,7 +179,6 @@
 
         <div class="visualClear"><!-- --></div>
     </div>
-
   </div>
 
 </body>

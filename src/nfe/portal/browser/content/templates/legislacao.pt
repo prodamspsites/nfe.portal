@@ -37,7 +37,7 @@
     </tal:filtro>
 
     <tal:filtro condition="view/FiltroLegislacao">
-      <tal:items define="items view/getLegislacao" repeat="item items">
+      <tal:items define="items python:view.getLegislacao(batch)" repeat="item items">
           <h3 tal:condition="repeat/item/start" tal:define="filtro view/FiltroLegislacao" tal:content="string:Foram encontrados ${repeat/item/length} resultados para o termo ${filtro}" />
 
           <div class="tileItem visualIEFloatFix"

@@ -32,29 +32,17 @@
 
     <tal:filtro condition="view/Filtro">
       <div class="divAccordeon">
-        <tal:items define="items view/getFilteredContent" repeat="item items">
+        <tal:items define="items python:view.getFilteredContent(batch)" repeat="item items">
             <h2 tal:condition="repeat/item/start" tal:define="filtro view/FiltroDuvida" tal:content="string:Foram encontrados ${repeat/item/length} resultados para o termo ${filtro}" />
             <div class="tileItem visualIEFloatFix">
 
                 <tal:pergunta  tal:condition="python:item.portal_type=='pergunta'">
                   <h3><span tal:content="structure python:item.pergunta.output" /></h3>
-                  <div class="textoAccordeon" tal:define="itempath python:'/'.join(item.getPhysicalPath());
-                                                          resposta python:item.portal_catalog(path=itempath, portal_type='resposta')"
-                                              tal:condition="resposta">
-                    <span tal:replace="structure python:resposta[0].getObject().resposta.output" />
+                  <div class="textoAccordeon">
+                    <span tal:replace="structure python:item.resposta.output" />
 
                   </div>
                 </tal:pergunta>
-
-                <tal:resposta  tal:condition="python:item.portal_type=='resposta'">
-                  <h3><span tal:content="structure python:obj.aq_parent.pergunta.output" /></h3>
-                  <div class="textoAccordeon">
-                    <span tal:replace="structure python:obj.resposta.output" />
-
-                  </div>
-                </tal:resposta>
-
-
                 <div class="visualClear"><!-- --></div>
             </div>
 
@@ -71,11 +59,9 @@
                tal:define="obj item/getObject"
                tal:condition="python:item.portal_type=='pergunta'">
 
-                  <h3><span tal:content="structure python:item.getObject().pergunta.output" /></h3>
-                  <div class="textoAccordeon" tal:define="itempath python:'/'.join(obj.getPhysicalPath());
-                                                          resposta python:obj.portal_catalog(path=itempath, portal_type='resposta')"
-                                              tal:condition="resposta">
-                    <span tal:replace="structure python:resposta[0].getObject().resposta.output" />
+                  <h3><span tal:content="structure python:item.pergunta.output" /></h3>
+                  <div class="textoAccordeon">
+                    <span tal:replace="structure python:obj.resposta.output" />
 
                   </div>
 
