@@ -12,6 +12,7 @@
     <div class="footerBottom">
        <div class="wrap">
           <p class="copyright">Todo o conteúdo do site está disponível sob licença Creative Commons. O código deste site é livre, consulte.|  <a href="#" target="_blank">Políticas do site</a></p>
+          <div class="grx"></div>
           <div class="divProdam">
             <p>Hospedagem<br /> e Desenvolvimento</p>
             <div class="logoProdam"><a href="http://www.prodam.sp.gov.br/" target="_blank"></a></div>

@@ -44,7 +44,7 @@
                           </script>
                           <!--ESCONDE VERSAO MOBILE-->
                           <div class="placarMobile">
-                                <span>Prestadores de serviços a emitir Nota Fiscal:</span>
+                                <span>Prestadores de serviços autorizados a emitir Nota Fiscal:</span>
                                 <br />
                                 <div id="flip-counter2" class="flip-counter"></div>
                                 <script type="text/javascript">
