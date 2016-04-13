@@ -86,7 +86,7 @@
             <p class="description"
                tal:condition="python:field['id'] == 'description'"
                tal:content="obj/Description" />
-            <a tal:condition="python:field['id'] == 'description'" href="#" title="Continuar lendo" class="btnContinuarLendo">Continuar lendo</a>
+            <a tal:attributes="href obj/absolute_url_path" tal:condition="python:field['id'] == 'description'" href="#" title="Continuar lendo" class="btnContinuarLendo">Continuar lendo</a>
 
             <tal:datetime condition="python:field['id'] == 'date'">
               <time
@@ -95,7 +95,7 @@
                               dateformat python:view.get_localized_time(datetime, format);
                               data python:dateformat.split(' ')[0];
                               hora python:dateformat.split(' ')[1];
-                              datefinal python:data + ' ás ' + hora"
+                              datefinal python:data"
 
                   tal:attributes="datetime datetime"
                   tal:content="datefinal">
