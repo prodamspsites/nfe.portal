@@ -62,8 +62,8 @@ class Colecao(BrowserView):
         return items
 
     def isSAT(self, obj):
-        isSat = 'sat-iss' in obj.getPhysicalPath()
-        if isSat:
+        parentId = obj.aq_parent
+        if parentId == 'sat-iss':
             return 'sat-iss'
         else:
             return False
