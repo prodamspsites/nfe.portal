@@ -62,7 +62,7 @@ class Colecao(BrowserView):
         return items
 
     def isSAT(self, obj):
-        parentId = obj.aq_parent
+        parentId = obj.aq_parent.id
         if parentId == 'sat-iss':
             return 'sat-iss'
         else:
