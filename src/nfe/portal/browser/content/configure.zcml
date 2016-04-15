@@ -4,14 +4,6 @@
     i18n_domain="nfe.portal">
 
     <browser:page
-      name="migracao"
-      for="*"
-      class=".migracao.Migracao"
-      template="templates/migracao.pt"
-      permission="zope2.View"
-    />
-
-    <browser:page
       name="chamadaView"
       for="*"
       class=".chamada.chamadaView"
