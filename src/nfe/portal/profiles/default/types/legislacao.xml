@@ -32,34 +32,36 @@
   <element value="plone.app.relationfield.behavior.IRelatedItems"/>
  </property>
  <property name="schema"></property>
- <property
-    name="model_source">&lt;model xmlns:i18n="http://xml.zope.org/namespaces/i18n" xmlns:security="http://namespaces.plone.org/supermodel/security" xmlns:marshal="http://namespaces.plone.org/supermodel/marshal" xmlns:form="http://namespaces.plone.org/supermodel/form" xmlns="http://namespaces.plone.org/supermodel/schema" i18n:domain="plone"&gt;
-    &lt;schema&gt;
-      &lt;field name="title" type="zope.schema.TextLine"&gt;
-        &lt;description/&gt;
-        &lt;required&gt;False&lt;/required&gt;
-        &lt;title&gt;Title&lt;/title&gt;
-      &lt;/field&gt;
-      &lt;field name="description" type="zope.schema.Text"&gt;
-        &lt;description/&gt;
-        &lt;required&gt;False&lt;/required&gt;
-        &lt;title&gt;Description&lt;/title&gt;
-      &lt;/field&gt;
-      &lt;field name="file" type="plone.namedfile.field.NamedBlobFile" marshal:primary="true"&gt;
-        &lt;description/&gt;
-        &lt;title i18n:translate="label_file"&gt;File&lt;/title&gt;
-      &lt;/field&gt;
-      &lt;field name="tipo" type="zope.schema.Choice"&gt;
-        &lt;description/&gt;
-        &lt;title&gt;Tipo&lt;/title&gt;
-        &lt;values&gt;
-          &lt;element&gt;Lei&lt;/element&gt;
-          &lt;element&gt;Decreto&lt;/element&gt;
-          &lt;element&gt;Portaria&lt;/element&gt;
-          &lt;element&gt;Instrumento Normativo&lt;/element&gt;
-        &lt;/values&gt;
-      &lt;/field&gt;
-    &lt;/schema&gt;
+ <property name="model_source">&lt;?xml version='1.0' encoding='utf8'?&gt;
+  &lt;model xmlns:i18n="http://xml.zope.org/namespaces/i18n" xmlns:security="http://namespaces.plone.org/supermodel/security" xmlns:marshal="http://namespaces.plone.org/supermodel/marshal" xmlns:form="http://namespaces.plone.org/supermodel/form" xmlns="http://namespaces.plone.org/supermodel/schema" i18n:domain="plone"&gt;
+  &lt;schema&gt;
+  &lt;field name="title" type="zope.schema.TextLine"&gt;
+  &lt;description/&gt;
+  &lt;required&gt;False&lt;/required&gt;
+  &lt;title&gt;Title&lt;/title&gt;
+  &lt;/field&gt;
+  &lt;field name="description" type="zope.schema.Text"&gt;
+  &lt;description/&gt;
+  &lt;required&gt;False&lt;/required&gt;
+  &lt;title&gt;Description&lt;/title&gt;
+  &lt;/field&gt;
+  &lt;field name="file" type="plone.namedfile.field.NamedBlobFile" marshal:primary="true"&gt;
+  &lt;description/&gt;
+  &lt;title i18n:translate="label_file"&gt;File&lt;/title&gt;
+  &lt;/field&gt;
+  &lt;field name="tipo" type="zope.schema.Choice"&gt;
+  &lt;description/&gt;
+  &lt;title&gt;Tipo&lt;/title&gt;
+  &lt;values&gt;
+  &lt;element&gt;Lei&lt;/element&gt;
+  &lt;element&gt;Decreto&lt;/element&gt;
+  &lt;element&gt;Portaria&lt;/element&gt;
+  &lt;element&gt;Instrução Normativa&lt;/element&gt;
+  &lt;element&gt;Ato Declaratório&lt;/element&gt;
+  &lt;element&gt;Comunicado&lt;/element&gt;
+  &lt;/values&gt;
+  &lt;/field&gt;
+  &lt;/schema&gt;
   &lt;/model&gt;</property>
  <property name="model_file">plone.app.contenttypes.schema:file.xml</property>
  <property name="schema_policy">dexterity</property>

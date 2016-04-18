@@ -9,7 +9,3 @@ class IProdamPortal(Interface):
 
 class IPergunta(Interface):
     pass
-
-
-class IResposta(Interface):
-    pass

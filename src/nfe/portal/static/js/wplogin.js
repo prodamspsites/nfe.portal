@@ -1,9 +1,9 @@
 ﻿// JScript File
 var url = {
-    login       : "http://localhost/3/login.aspx",
-    senha       : "http://localhost/3/login.aspx",
-    novo        : "http://localhost/3/login.aspx?new=true",
-    certificado : "http://localhost/3/loginicp.aspx"
+    login       : "https://nfe.prefeitura.sp.gov.br/login.aspx",
+    senha       : "https://nfe.prefeitura.sp.gov.br/login.aspx",
+    novo        : "https://nfe.prefeitura.sp.gov.br/login.aspx?new=true",
+    certificado : "https://nfe.prefeitura.sp.gov.br/loginicp.aspx"
 }
 
 $(document).ready(function() {
@@ -12,23 +12,23 @@ $(document).ready(function() {
     cmdNaoCadastrado = $("#linkNaoCadastrado").click(naoCadastrado);
     cmdCertificado   = $("#linkCertificado").click(loginCertificado);
     loginForm        = $("#wploginform");
-    
+
     j_username = $("#j_username");
     j_password = $("#j_password");
-    
+
     j_username.focus(function(){
         $(this).setMask("99999999999999").val("");
     });
 
     j_username.blur(function(){
         var j_username = $(this).val()
-        if(j_username.length <= 11) 
+        if(j_username.length <= 11)
             $(this).setMask("999.999.999-99");
-        if(j_username.length > 11) 
-            $(this).setMask("99.999.999/9999-99");            
+        if(j_username.length > 11)
+            $(this).setMask("99.999.999/9999-99");
         validateCpfCnpj();
     })
-    
+
     loginForm.submit(validateCpfCnpj);
 });
 
@@ -37,10 +37,10 @@ function loginSistema(e) {
     $("#enviar").attr("disabled", "disabled");
     e.preventDefault();
     $("#j_command").val("executarLogin");
-  
+
     var isValidPassword = validatePassword();
     var isValidCpfCnpj  = validateCpfCnpj();
-    
+
     if(isValidPassword && isValidCpfCnpj) {
         loginForm.attr("action", url.login).submit();
     } else {
@@ -75,7 +75,7 @@ function validateCpfCnpj() {
     else {
         j_username.removeClass("erro");
     }
-    
+
     return true;
 }
 
@@ -88,7 +88,6 @@ function validatePassword() {
     else {
         j_password.removeClass("erro");
     }
-    
+
     return true;
 }
-

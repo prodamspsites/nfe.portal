@@ -24,7 +24,9 @@
               <option value="Lei">Leis</option>
               <option value="Decreto">Decretos</option>
               <option value="Portaria">Portarias</option>
-              <option value="Instrumento Normativo">Instrumentos Normativos</option>
+              <option value="Instrução Normativa">Instruções Normativas</option>
+              <option value="Ato Declaratório">Atos Declaratórios</option>
+              <option value="Comunicado">Comunicados</option>
             </select>
             <input class="filtrarLegislacaoButton" type="submit" value="Filtrar" />
             <a class="btnLimparFiltro" tal:condition="view/FiltroLegislacao" tal:attributes="href python:context.absolute_url()">Limpar Filtro</a>

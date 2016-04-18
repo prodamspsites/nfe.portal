@@ -7,21 +7,11 @@
 
           <tal:pergunta  tal:condition="python:item.portal_type=='pergunta'">
             <h3><span tal:content="structure python:item.pergunta.output" /></h3>
-            <div class="textoAccordeon" tal:define="itempath python:'/'.join(item.getPhysicalPath());
-                                                    resposta python:item.portal_catalog(path=itempath, portal_type='resposta')"
-                                        tal:condition="resposta">
-              <span tal:replace="structure python:resposta[0].getObject().resposta.output" />
+            <div class="textoAccordeon">
+              <span tal:replace="structure python:item.resposta.output" />
 
             </div>
           </tal:pergunta>
-
-          <tal:resposta  tal:condition="python:item.portal_type=='resposta'">
-            <h3><span tal:content="structure python:obj.aq_parent.pergunta.output" /></h3>
-            <div class="textoAccordeon">
-              <span tal:replace="structure python:obj.resposta.output" />
-
-            </div>
-          </tal:resposta>
 
 
           <div class="visualClear"><!-- --></div>
@@ -48,22 +38,12 @@
               <div class="tileItem visualIEFloatFix">
 
                   <tal:pergunta  tal:condition="python:item.portal_type=='pergunta'">
-                    <h3><span tal:content="structure python:item.pergunta.output" /></h3>
-                    <div class="textoAccordeon" tal:define="itempath python:'/'.join(item.getPhysicalPath());
-                                                            resposta python:item.portal_catalog(path=itempath, portal_type='resposta')"
-                                                tal:condition="resposta">
-                      <span tal:replace="structure python:resposta[0].getObject().resposta.output" />
+                    <h3><span tal:content="structure python:item.getObject().pergunta.output" /></h3>
+                    <div class="textoAccordeon">
+                      <span tal:replace="structure python:item.getObject().resposta.output" />
 
                     </div>
                   </tal:pergunta>
-
-                  <tal:resposta  tal:condition="python:item.portal_type=='resposta'">
-                    <h3><span tal:content="structure python:obj.aq_parent.pergunta.output" /></h3>
-                    <div class="textoAccordeon">
-                      <span tal:replace="structure python:obj.resposta.output" />
-
-                    </div>
-                  </tal:resposta>
 
 
                   <div class="visualClear"><!-- --></div>
