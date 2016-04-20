@@ -1,0 +1,84 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="nfe.portal">
+
+  <include package="plone.tiles" file="meta.zcml" />
+  <include package="z3c.unconfigure" file="meta.zcml" />
+
+  <plone:tile
+      name="chamada"
+      title="Lista de chamadas"
+      description="Um tile de chamadas para capas."
+      add_permission="cmf.ModifyPortalContent"
+      schema=".chamada.IChamada"
+      class=".chamada.Chamada"
+      permission="zope2.View"
+      for="*"
+      i18n:attributes="title; description"
+      />
+
+  <plone:tile
+      name="nfe.sliderHome"
+      title="Slider home"
+      description="Exibe chamadas no formato slider"
+      add_permission="cmf.ModifyPortalContent"
+      schema=".slider.ISlider"
+      class=".slider.Slider"
+      permission="zope2.View"
+      for="*"
+      i18n:attributes="title; description"
+      />
+
+  <plone:tile
+      name="page_template"
+      title="Exibe um page template"
+      description="Exibe o page template selecionado"
+      add_permission="cmf.ModifyPortalContent"
+      schema=".template.IPageTemplate"
+      class=".template.PageTemplate"
+      permission="zope2.View"
+      for="*"
+      i18n:attributes="title; description"
+      />
+
+  <plone:tile
+      name="nfe.comofunciona"
+      title="Como Funciona"
+      description="Exibe tutorial"
+      add_permission="cmf.ModifyPortalContent"
+      schema=".tutorial.ITutorial"
+      class=".tutorial.Tutorial"
+      permission="zope2.View"
+      for="*"
+      i18n:attributes="title; description"
+      />
+
+  <unconfigure>
+    <plone:tile
+        name="collective.cover.collection"
+        title="Collection Tile"
+        description="A tile that shows the result of a collection."
+        icon="++resource++collective.cover/tile-collection.png"
+        add_permission="cmf.ModifyPortalContent"
+        schema=".collection.ICollectionTile"
+        class=".collection.CollectionTile"
+        permission="zope2.View"
+        for="*"
+        />
+  </unconfigure>
+
+  <plone:tile
+      name="collective.cover.collection"
+      title="Collection Tile"
+      description="A tile that shows the result of a collection."
+      icon="++resource++collective.cover/tile-collection.png"
+      add_permission="cmf.ModifyPortalContent"
+      schema=".collection.ICollectionTile"
+      class=".collection.CollectionTile"
+      permission="zope2.View"
+      for="*"
+      />
+
+</configure>

@@ -1,0 +1,92 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      tal:omit-tag=""
+      i18n:domain="prodam.portal">
+
+      <div class="divSideBarPlacar">
+        <!-- INCLUDE DO PLACAR -->
+        <!-- TODO: Alterar para link de produção-->
+        <script type="text/javascript" src="https://nfe.prefeitura.sp.gov.br/publico/placar.aspx"></script>
+
+        <!-- My flip counter script, REQUIRED -->
+        <!--<script src="js/jquery.js" type="text/javascript"></script>-->
+        <script src="++theme++nfe/js/flipcounter/jshashtable-2.1_src.js" type="text/javascript"></script>
+        <script src="++theme++nfe/js/flipcounter/jquery.numberformatter-1.2.3.js" type="text/javascript"></script>
+        <script src="++theme++nfe/js/flipcounter/flipCounterProdam.js" type="text/javascript"></script>
+        <!-- INCLUDE DE LINKS VARIAVEIS -->
+
+        <div id="direita_menu">
+            <div id="titulo_direita_menu">
+              <h2>Placar</h2>
+            </div>
+            <div id="banner_placar">
+                <span>Crédito concedido (em R$):</span>
+                        <br />
+                        <div id="flip-counter1" class="flip-counter"></div>
+                          <script type="text/javascript">
+                          //<![CDATA[
+                          $(function() {
+                              // Initialize a new counter
+                              var myCounter = new flipCounter('flip-counter1', {
+                                  value: valorInicioContador1 ,
+                                  inc: valorDeIncremento1 ,
+                                  pace: valorPace1,
+                                  numFractionalDigits:2 ,
+                                  auto: true,
+                                  formatNumberOptions: { format: "000,000,000.00", locale: "br" }
+                              });
+                          });
+                      valorDeIncremento1 = valorDevolutometroDeIncremento;
+                      valorInicioContador1 = valorDevolutometroInicioContador;
+                      valorPace1 = valorDevolutometroVelocidadeIncremento;
+                          //]]>
+                          </script>
+                          <!--ESCONDE VERSAO MOBILE-->
+                          <div class="placarMobile">
+                                <span>Prestadores de serviços autorizados a emitir Nota Fiscal:</span>
+                                <br />
+                                <div id="flip-counter2" class="flip-counter"></div>
+                                <script type="text/javascript">
+                                //<![CDATA[
+                                $(function() {
+                                    // Initialize a new counter
+                                    var myCounter = new flipCounter('flip-counter2', {
+                                        value: valorInicioContador2 ,
+                                        inc: valorDeIncremento2 ,
+                                        pace: 1000,
+                                        numFractionalDigits:2 ,
+                                        auto: true,
+                                        formatNumberOptions: { format: "000,000", locale: "br" }
+                                    });
+                                });
+                            valorDeIncremento2 = 0;
+                            valorInicioContador2 = prestadores;
+                                //]]>
+                                </script>
+                                <span>Notas Fiscais emitidas:</span>
+                                <br />
+                                <div id="flip-counter3" class="flip-counter"></div>
+                                <script type="text/javascript">
+                                //<![CDATA[
+                                $(function() {
+                                    // Initialize a new counter
+                                    var myCounter = new flipCounter('flip-counter3', {
+                                        value: valorQtdeNfsBase ,
+                                        inc: valorQtdeNfsIncremento ,
+                                        pace: valorPace3,
+                                        numFractionalDigits:2 ,
+                                        auto: true,
+                                        formatNumberOptions: { format: "000,000,000", locale: "br" }
+                                    });
+                                });
+                            valorDeIncremento3 = 0;
+                            valorInicioContador3 = nfe;
+                            valorPace3 = valorDevolutometroVelocidadeIncremento;
+                                //]]>
+                                </script>
+              </div>
+          </div>
+
+      </div>
+</html>

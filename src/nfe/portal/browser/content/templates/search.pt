@@ -1,0 +1,188 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+    xmlns:tal="http://xml.zope.org/namespaces/tal"
+    xmlns:metal="http://xml.zope.org/namespaces/metal"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    lang="en"
+    metal:use-macro="context/main_template/macros/master"
+    i18n:domain="plone">
+
+<head>
+  <metal:block metal:fill-slot="head_slot">
+
+  <link rel="alternate" title="RSS 1.0" type="application/rss+xml"
+      tal:define="here_url context/@@plone_context_state/object_url;"
+      tal:condition="request/SearchableText|nothing"
+      tal:attributes="href string:$here_url/search_rss?${request/QUERY_STRING}"/>
+
+  <meta name="navigation_root_url" tal:attributes="content view/navroot_url" />
+
+  </metal:block>
+
+  <metal:block fill-slot="top_slot"
+    tal:define="dummy python:request.set('disable_border',1);
+      disable_column_one python:request.set('disable_plone.leftcolumn',1);" />
+</head>
+
+<body>
+
+
+  <div id="content-core" metal:fill-slot="main">
+
+    <div tal:define="portal context/@@plone_portal_state/portal;
+                      first_call not:request/advanced_search|nothing;
+                      st python:request.get('SearchableText', '');
+                      DateTime python:modules['DateTime'].DateTime;
+                      navigation_root_url view/navroot_url;">
+
+        <div class="row">
+          <div id="portal-breadcrumbsBusca">
+            <p class="contentBread">
+              <span>Você está em :</span>
+              <span>Resultados da busca </span>
+            </p>
+          </div>
+            <div class="cell width-full position-0">
+                <h1 class="documentFirstHeading">
+                    Resultado da busca
+                </h1>
+
+                <p id="rss-subscription" i18n:domain="plone"
+                   tal:define="syndication context/@@tools/syndication|nothing"
+                   tal:condition="syndication/isSiteSyndicationAllowed|nothing">
+                      <img src="" alt="RSS"
+                           tal:attributes="src string:${portal_url}/rss.gif"/>
+                    <a href=""
+                       class="link-feed"
+                       tal:define="here_url context/@@plone_context_state/object_url"
+                       tal:attributes="href string:$here_url/search_rss?${request/QUERY_STRING}">
+                        <span i18n:translate="title_subscribe_rss_feed">
+                          Subscribe to an always-updated RSS feed.
+                        </span>
+                    </a>
+                </p>
+            </div>
+            <div class="visualClear"><!-- --></div>
+            <div id="search-results-wrapper"
+                 class="cell width-full position-0"
+                 tal:define="b_start python:0;
+                             b_start request/b_start | b_start;
+                             batch python: view.results(b_start=b_start);
+                             normalizeString nocall:context/@@plone/normalizeString;">
+
+                <div id="search-results-bar">
+                  <div class="buscTermo" tal:condition="st">
+                      <p tal:condition="python:batch.sequence_length > 1">Foram encontrados <span tal:content="batch/sequence_length|string:0">73</span> resultados para o termo "<span id="search-term" tal:content="st">
+                          termo
+                      </span>"</p>
+                      <p tal:condition="python:batch.sequence_length == 1">Foi encontrado <span tal:content="batch/sequence_length|string:0">73</span> resultado para o termo "<span id="search-term" tal:content="st">
+                          termo
+                      </span>"</p>
+                  </div>
+
+                </div>
+
+                <div class="visualClear"><!-- --></div>
+
+                <metal:searchresults define-macro="search_results">
+                    <div id="search-results-bar"
+                         tal:define="navigation_root_url context/@@plone_portal_state/navigation_root_url;">
+                        <div class="buscTermo">
+                        <metal:noresults tal:condition="not: batch">
+                          <p i18n:domain="plone"><span i18n:translate="description_no_results_found">No results were found.</span></p>
+                        </metal:noresults>
+                        </div>
+                        <metal:results tal:condition="batch"
+                                       tal:define="isAnon context/@@plone_portal_state/anonymous;
+                                                   toLocalizedTime nocall: context/@@plone/toLocalizedTime;
+                                                   site_properties context/portal_properties/site_properties;
+                                                   use_view_action site_properties/typesUseViewActionInListings|python:();
+                                                   allowAnonymousViewAbout site_properties/allowAnonymousViewAbout;
+                                                   show_about python:not isAnon or allowAnonymousViewAbout;">
+                          <dl class="searchResults">
+                              <tal:results repeat="item batch">
+                              <div tal:condition="python:item.portal_type=='pergunta'" class="divAccordeon">
+                                <h3>
+                                  <tal:pergunta tal:define="type item/portal_type">
+                                    <div tal:condition="item/portal_type">
+                                     <!-- Tratativa de perguntas e respostas -->
+                                     <span tal:condition="python:item.portal_type=='pergunta'">
+                                          <span tal:replace="structure python:item.getObject().pergunta.output" />
+                                      </span>
+                                    </div>
+
+                                  </tal:pergunta>
+                                </h3>
+
+                                <div class="textoAccordeon">
+                                <tal:pergunta tal:define="type item/portal_type">
+                                  <tal:resp tal:define="respostas python: item.getChildNodes()" >
+                                              <tal:filhos tal:repeat="i respostas">
+                                                  <span tal:replace="structure python: i.resposta.output"></span>
+                                              </tal:filhos>
+                                          </tal:resp>
+                                  </tal:pergunta>
+                                </div>
+
+                                <tal:resposta  tal:condition="python:item.portal_type=='resposta'"
+                                               tal:define="obj item/getObject">
+                                  <h3><span tal:content="structure python:obj.aq_parent.pergunta.output" /></h3>
+                                  <div class="textoAccordeon">
+                                    <span tal:replace="structure python:obj.resposta.output" />
+                                  </div>
+                                </tal:resposta>
+                              </div>
+
+                              <!-- Busca Padrão -->
+                                    <tal:tipopadrao tal:condition="python:item.portal_type !='resposta' and
+                                                                       item.portal_type !='pergunta'">
+                                   <div class="resultado">
+                                    <dt tal:attributes="class item/ContentTypeClass">
+                                      <a href="#"
+                                         tal:define="item_url item/getURL;
+                                                     item_type item/PortalType"
+                                         tal:attributes="href python:item_type in use_view_action and (item_url + '/view') or item_url;
+                                                         class string:state-${item/review_state}"
+                                         tal:content="python:item.getDataOrigin().pretty_title_or_id()" />
+                                    </dt>
+                                    <dd>
+
+                                      <cite class="documentLocation link-location"
+                                            tal:define="breadcrumbs python: view.breadcrumbs(item);
+                                                        is_rtl context/@@plone_portal_state/is_rtl;"
+                                            tal:condition='breadcrumbs'>
+                                          <span tal:repeat="crumb breadcrumbs"
+                                                tal:attributes="dir python:is_rtl and 'rtl' or 'ltr';">
+                                              <tal:item tal:define="is_last repeat/crumb/end;
+                                                                    url crumb/absolute_url;
+                                                                    title crumb/Title">
+                                                  <span tal:content="title"/>
+                                                  <span class="breadcrumbSeparator" tal:condition="not: is_last">
+                                                      <tal:ltr condition="not: is_rtl">/</tal:ltr>
+                                                      <tal:rtl condition="is_rtl">/</tal:rtl>
+                                                  </span>
+                                               </tal:item>
+                                          </span>
+
+                                      </cite>
+
+                                    </dd>
+                                  </div>
+                                    </tal:tipopadrao>
+                              </tal:results>
+                          </dl>
+                          <div class="divPaginacao">
+                            <div metal:use-macro="context/nfe_macros/macros/navigation" />
+                        </div>
+                        </metal:results>
+                    </div>
+                </metal:searchresults>
+
+            </div>
+        </div>
+
+        <div class="visualClear"><!-- --></div>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<tal:Form condition="python:context.portal_type=='FormFolder'">
+  <tal:hasItens condition="python:view.getDuvidas">
+    <p class="formDescription">Veja as dúvidas mais comuns:</p>
+    <div class="divAccordeon">
+      <tal:items define="items view/getDuvidas" repeat="item items">
+        <div class="tileItem visualIEFloatFix">
+
+          <tal:pergunta  tal:condition="python:item.portal_type=='pergunta'">
+            <h3><span tal:content="structure python:item.pergunta.output" /></h3>
+            <div class="textoAccordeon">
+              <span tal:replace="structure python:item.resposta.output" />
+
+            </div>
+          </tal:pergunta>
+
+
+          <div class="visualClear"><!-- --></div>
+        </div>
+      </tal:items>
+    </div>
+
+    <div class="searchDuvidas">
+        <form action="http://localhost:8080/Plone/@@search" tal:attributes="action python:'/'.join(context.getPhysicalPath())">
+
+          <div class="vcTambem">
+            <p>Você também pode fazer uma busca por palavra-chave no nosso banco de informações:</p>
+
+            <input name="SearchableText" type="text" size="18" title="" placeholder="" class="filtrarLegislacao" id="filtrarLegislacao" />
+            <input class="filtrarLegislacaoButton" type="submit" value="Buscar" />
+
+          </div>
+        </form>
+
+      <tal:filtro condition="view/Filtro">
+        <div class="divAccordeon find">
+          <tal:items define="items view/getFilteredContent" repeat="item items">
+              <h2 tal:condition="repeat/item/start" tal:define="filtro view/Filtro" tal:content='string:Foram encontrados ${repeat/item/length} resultados para o termo "${filtro}"' />
+              <div class="tileItem visualIEFloatFix">
+
+                  <tal:pergunta  tal:condition="python:item.portal_type=='pergunta'">
+                    <h3><span tal:content="structure python:item.getObject().pergunta.output" /></h3>
+                    <div class="textoAccordeon">
+                      <span tal:replace="structure python:item.getObject().resposta.output" />
+
+                    </div>
+                  </tal:pergunta>
+
+
+                  <div class="visualClear"><!-- --></div>
+              </div>
+
+          </tal:items>
+        </div>
+      </tal:filtro>
+
+    </div>
+
+  </tal:hasItens>
+</tal:Form>

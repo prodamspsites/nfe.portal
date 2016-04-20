@@ -1,0 +1,29 @@
+<div id="siteNav" tal:define="secoes view/returnSections">
+  <div class="divMenu">
+    <ul class="globalnav">
+      <li class="cidadao" tal:repeat="secao secoes" tal:attributes="class secao/id"><a href="#" tal:attributes="href python:secao.getObject().absolute_url()" tal:content="python:secao.Title.upper()">CIDADÃO</a></li>
+    </ul>
+  </div>
+
+  <div class="menuSite">
+    <nav class="menu cidadao" tal:attributes="class python:'menu ' + view.getSectionID()">
+      <div class="wrap">
+        <ul>
+          <tal:section define="section view/getSection" repeat="children section">
+            <li tal:attributes="class python:view.segundoNivel(children) and 'submenu' or ''" tal:condition="not:children/exclude_from_nav">
+              <a href="#" title="Como participar" tal:attributes="href python:children.absolute_url(); title children/Title" tal:content="children/Title">Como participar</a>
+              <tal:segundoNivel condition="python:view.segundoNivel(children)">
+                <ul class="menuLista">
+                  <tal:items define="items python:view.getSegundoNivel(children)" repeat="item items">
+                      <li tal:condition="python:view.checkVisibility(item.getObject()) and not item.exclude_from_nav"><a href="#" tal:attributes="href python:item.getObject().absolute_url(); title item/Title" tal:content="item/Title">Perguntas e respostas</a></li>
+                  </tal:items>
+                </ul>
+              </tal:segundoNivel>
+            </li>
+          </tal:section>
+        </ul>
+      </div>
+    </nav>
+    <!--Fim Menu-->
+  </div>
+</div>

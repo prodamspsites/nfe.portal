@@ -1,0 +1,79 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="nfe.portal">
+
+    <browser:page
+      name="chamadaView"
+      for="*"
+      class=".chamada.chamadaView"
+      template="templates/chamada.pt"
+      permission="zope2.View"
+    />
+
+    <browser:page
+      name="section_view"
+      for="*"
+      class=".secao.SectionView"
+      template="templates/section_view.pt"
+      permission="zope2.View"
+    />
+
+    <browser:page
+      name="arquivos_view"
+      permission="zope2.View"
+      for="plone.app.contenttypes.interfaces.ICollection"
+      class=".arquivos.ArquivosView"
+      template="templates/arquivos.pt"
+      />
+
+    <browser:page
+      name="duvidas_view"
+      permission="zope2.View"
+      for="plone.app.contenttypes.interfaces.ICollection"
+      template="templates/duvidas.pt"
+      class=".colecao.Colecao"
+      />
+
+
+    <browser:page
+      name="legislacao_view"
+      permission="zope2.View"
+      for="plone.app.contenttypes.interfaces.ICollection"
+      template="templates/legislacao.pt"
+      class=".colecao.Colecao"
+      />
+
+    <browser:page
+      name="capa_noticias_view"
+      permission="zope2.View"
+      for="plone.app.contenttypes.interfaces.ICollection"
+      template="templates/capa_noticias.pt"
+      class=".colecao.Noticias"
+      />
+
+    <browser:page
+      name="busca"
+      class="plone.app.search.browser.Search"
+      permission="zope2.View"
+      for="*"
+      template="templates/search.pt"
+      />
+
+    <browser:page
+      name="nfe_macros"
+      for="*"
+      permission="zope.Public"
+      class="plone.batching.browser.BatchMacrosView"
+      template="templates/batch_macros.pt"
+      />
+
+    <browser:page
+      name="nfenavigation"
+      for="*"
+      permission="zope.Public"
+      class="plone.batching.browser.PloneBatchView"
+      template="templates/batchnavigation.pt"
+      />
+
+</configure>

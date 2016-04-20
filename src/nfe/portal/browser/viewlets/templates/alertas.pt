@@ -1,0 +1,16 @@
+<tal:visible tal:define="alertaCondition view/getAlertas;
+                         type python:context.portal_type=='collective.cover.content' or context.portal_type=='section'"
+             tal:condition="python:alertaCondition and type">
+    <div class="informativosHome">
+      <div class="wrap">
+        <span class="titImportante">IMPORTANTE</span>
+        <ul class="bxsliderAlerta">
+        <tal:alertas tal:define="alertas view/getAlertas" repeat="alerta alertas">
+            <li class="alertas">
+                <span tal:replace="structure python:alerta.getObject().mensagem_do_alerta.output" />
+            </li>
+        </tal:alertas>
+        </ul>
+      </div>
+    </div>
+</tal:visible>

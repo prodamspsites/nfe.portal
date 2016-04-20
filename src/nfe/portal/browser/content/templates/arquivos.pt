@@ -1,0 +1,56 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+<body>
+
+<metal:content-core fill-slot="content-core">
+<metal:block use-macro="context/standard_view/macros/content-core">
+
+    <metal:entries fill-slot="entries">
+    <metal:block use-macro="context/standard_view/macros/entries">
+    <metal:entry fill-slot="entry">
+
+        <div class="tileItem visualIEFloatFix"
+             tal:define="obj item/getObject"
+             tal:condition="python:item.portal_type=='File'">
+
+            <h2 class="tileHeadline" metal:define-macro="listitem">
+                <a href="#"
+                   class="summary url"
+                   tal:attributes="href python:item_type in use_view_action and item_url+'/view' or item_url;"
+                   tal:content="item/Title">
+                    Item Title
+                </a>
+            </h2>
+            <time class="data" tal:define="date obj/Date;
+                                    data python:view.getDate(date)"
+                        tal:content="data" />
+            <p class="tileBody" tal:condition="item_description">
+                <span class="description" tal:content="item_description">
+                    description
+                </span>
+            </p>
+
+            <p class="tileFooter">
+            </p>
+            <span class="linkDownloadLeg">
+                <a tal:attributes="href python:item_type in use_view_action and item_url+'/@@download/file/'+item.file.filename" href="" tal:define="mtype python:item.file.contentType.split('/')[1].upper()" tal:content="string:Baixar ${mtype}"  class="btnDownloadLeg"/>
+                </span>
+
+            <div class="visualClear"><!-- --></div>
+        </div>
+
+    </metal:entry>
+    </metal:block>
+    </metal:entries>
+
+</metal:block>
+</metal:content-core>
+
+</body>
+</html>

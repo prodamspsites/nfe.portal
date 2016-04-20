@@ -43,7 +43,10 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
+        'nfe.tema',
+        'collective.cover',
         'collective.nitf',
+        'wildcard.tinymceplugins.youtube',
         'sc.social.like',
         'five.pt',
         'Pillow',

@@ -1,0 +1,96 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="nfe.portal">
+
+    <browser:viewlet
+        name="nfe.footer"
+        manager="plone.app.layout.viewlets.interfaces.IPortalFooter"
+        class=".viewlets.DefaultViewlet"
+        layer="nfe.portal.interfaces.IProdamPortal"
+        template="templates/footer_nfe.pt"
+        permission="zope2.View"
+    />
+
+     <browser:viewlet
+        name="nfe.logo.principal"
+        manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
+        class="plone.app.layout.viewlets.common.LogoViewlet"
+        permission="zope2.View"
+        layer="nfe.portal.interfaces.IProdamPortal"
+        template="templates/logo.pt"
+    />
+
+    <browser:viewlet
+        name="nfe.logo.secundario"
+        manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
+        class="plone.app.layout.viewlets.common.LogoViewlet"
+        permission="zope2.View"
+        layer="nfe.portal.interfaces.IProdamPortal"
+        template="templates/logo_secundario.pt"
+    />
+
+    <browser:viewlet
+        name="nfe.reclamacoes"
+        manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
+        class=".viewlets.DefaultViewlet"
+        permission="zope2.View"
+        layer="nfe.portal.interfaces.IProdamPortal"
+        template="templates/reclamacoes.pt"
+    />
+
+    <browser:viewlet
+        name="nfe.acesso.mobile"
+        manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
+        class=".viewlets.DefaultViewlet"
+        permission="zope2.View"
+        layer="nfe.portal.interfaces.IProdamPortal"
+        template="templates/acesso_mobile.pt"
+    />
+
+    <browser:viewlet
+        name="nfe.navegacao.horizontal"
+        manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
+        class=".nav.Navegacao"
+        permission="zope2.View"
+        layer="nfe.portal.interfaces.IProdamPortal"
+        template="templates/navegacao_horizontal.pt"
+    />
+
+    <browser:viewlet
+        name="nfe.alertas"
+        manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
+        class=".alertas.Alertas"
+        permission="zope2.View"
+        layer="nfe.portal.interfaces.IProdamPortal"
+        template="templates/alertas.pt"
+    />
+
+    <browser:viewlet
+        name="nfe.navegacao.secundaria"
+        manager="plone.app.layout.viewlets.interfaces.IAboveContentTitle"
+        class=".nav.Navegacao"
+        permission="zope2.View"
+        layer="nfe.portal.interfaces.IProdamPortal"
+        template="templates/navegacao_secundaria.pt"
+    />
+
+    <browser:viewlet
+        name="nfe.duvidas"
+        manager="plone.app.layout.viewlets.interfaces.IBelowContentTitle"
+        class=".duvidas.Duvidas"
+        permission="zope2.View"
+        layer="nfe.portal.interfaces.IProdamPortal"
+        template="templates/duvidas.pt"
+    />
+
+    <browser:viewlet
+        name="nfe.searchbox"
+        manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
+        class="plone.app.layout.viewlets.common.SearchBoxViewlet"
+        permission="zope2.View"
+        template="templates/searchbox.pt"
+        />
+
+</configure>
+

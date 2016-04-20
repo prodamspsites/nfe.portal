@@ -1,0 +1,26 @@
+<div tal:condition="view/getSegundoNivelTitle">
+  <div class="divMenuSecundaria">
+    <h1 class="titulo_principal" tal:content="python:context.segundonivel_titulo" />
+  </div>
+
+  <div class="menuSiteSegundoNivel">
+    <nav class="menu cidadao" tal:attributes="class python:'menu-segundo-nivel ' + view.getSectionID()">
+      <div class="wrap">
+        <ul>
+          <tal:items define="items python:view.getSegundoNivel(context)" repeat="item items">
+              <li tal:condition="python:view.checkVisibility(item.getObject()) and not item.exclude_from_nav"
+                  tal:define="isActive python:view.isActive(item.getObject())"
+                  tal:attributes="class python:isActive and 'active' or ''">
+                <a href="#"
+                    tal:attributes="href python:item.getObject().absolute_url();
+                                    title item/Title"
+                    tal:content="item/Title">Perguntas e respostas</a></li>
+          </tal:items>
+        </ul>
+      </div>
+    </nav>
+    <!--Fim Menu-->
+  </div>
+
+
+</div>

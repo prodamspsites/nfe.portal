@@ -1,0 +1,36 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="nfe.portal">
+
+  <metal:content-core fill-slot="main">
+    <metal:block define-macro="menu">
+    <tal:menu tal:define="folder_path python:'/'.join(context.getPhysicalPath());
+                          parent_path python: '/'.join(context.aq_parent.getPhysicalPath());
+                          catalog python: context.portal_catalog">
+      <tal:folder tal:condition="python:context.portal_type == 'Folder'">
+        <tal:define tal:define="itens python:catalog(path=folder_path)">
+          <ul>
+            <tal:lista tal:repeat="list itens">
+              <li><a href="#" tal:content="list/Title" tal:attributes="href python:list.getPath()">Menu</a></li>
+            </tal:lista>
+          </ul>
+        </tal:define>
+      </tal:folder>
+      <tal:other tal:condition="python:context.portal_type != 'Folder'">
+        <tal:define tal:define="itens python:catalog(path=parent_path)">
+          <ul>
+            <tal:lista tal:repeat="list itens">
+              <li><a href="#" tal:content="list/Title">aaa</a></li>
+            </tal:lista>
+          </ul>
+        </tal:define>
+      </tal:other>
+    </tal:menu>
+    </metal:block>
+  </metal:content-core>
+
+</html>
