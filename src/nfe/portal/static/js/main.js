@@ -1,4 +1,11 @@
 $(document).ready(function(){
+    //BUSCA VAZIA
+    $('.searchButton').click(function(){
+        if ($('#searchGadget').val() == ''){
+            $('#searchGadget').focus();
+            return false;
+        }
+    });
     //SLIDER HOME
     $('.bxslider').bxSlider({
      // auto: true,
