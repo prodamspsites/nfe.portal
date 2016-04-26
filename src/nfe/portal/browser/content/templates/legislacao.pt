@@ -50,7 +50,7 @@
                 <h2 class="tileHeadline" metal:define-macro="listitem">
                     <a href="#"
                        class="summary url"
-                       tal:attributes="href python:item.getObject().absolute_url();"
+                       tal:attributes="href python:obj.absolute_url()+'/@@download/file/'+item.file.filename"
                        tal:content="item/Title">
                         Item Title
                     </a>
@@ -96,7 +96,7 @@
                 <h2 class="tileHeadline" metal:define-macro="listitem">
                     <a href="#"
                        class="summary url"
-                       tal:attributes="href python:obj.absolute_url()+'/view'"
+                       tal:attributes="href python:obj.absolute_url()+'/@@download/file/'+item.file.filename"
                        tal:content="item/Title">
                         Item Title
                     </a>
