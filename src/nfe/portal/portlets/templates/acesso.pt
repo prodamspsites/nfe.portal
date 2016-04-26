@@ -24,8 +24,8 @@
       </div>
       <div class="divSideBarAcessoBottom">
         <p>Instale o aplicativo no seu smartphone</p>
-        <a href="#" title="Baixar na Play Store" class="btnPlay"><span>Baixar na <strong>Play Store</strong></span></a>
-        <a href="#" title="Baixar na App Store" class="btnApp"><span>Baixar na <strong>App Store</strong></span></a>
+        <a href="https://play.google.com/store/apps/details?id=br.gov.sp.prefeitura.nfe&hl=pt_BR" title="Baixar na Play Store" class="btnPlay" target="blank"><span>Baixar na <strong>Play Store</strong></span></a>
+        <a href="https://itunes.apple.com/br/app/nf-paulistana/id486947467?mt=8" title="Baixar na App Store" class="btnApp" target="blank"><span>Baixar na <strong>App Store</strong></span></a>
       </div>
 
 </html>
