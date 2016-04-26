@@ -59,6 +59,7 @@ class Navegacao(ViewletBase):
                     return True
             else:
                 if obj.hasProperty('currentPath'):
+                    obj.manage_delProperties(['segundoNivel', 'currentPath', 'segundonivel_titulo'])
                     return True
                 else:
                     return False
