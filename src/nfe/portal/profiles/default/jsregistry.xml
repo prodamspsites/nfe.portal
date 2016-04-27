@@ -274,7 +274,14 @@
     id="++resource++nfe.portal/js/jquery.meiomask.js"
     inline="False"
     insert-after="++resource++nfe.portal/js/flipcounter/jquery.numberformatter-1.2.3.js"/>
- --><javascript authenticated="False" bundle="default" cacheable="True"
+ -->
+ <javascript authenticated="False" bundle="default" cacheable="True"
+    compression="safe" conditionalcomment="" cookable="True" enabled="True"
+    expression=""
+    id="++resource++nfe.portal/js/jquery.maskedinput-1.1.4.pack.js"
+    inline="False"
+    insert-after="++resource++nfe.portal/js/jquery.maskedinput-1.1.4.pack.js"/>
+ <javascript authenticated="False" bundle="default" cacheable="True"
     compression="safe" conditionalcomment="" cookable="True" enabled="True"
     expression=""
     id="++resource++nfe.portal/js/wplogin.js"
