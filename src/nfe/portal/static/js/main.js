@@ -12,6 +12,9 @@ $(document).ready(function(){
       //autoControls: true,
     });
 
+
+
+
     $('.bxslider2').bxSlider({
       pager: 'short'
     });
@@ -38,6 +41,18 @@ $(document).ready(function(){
 
     });
 
+//MASCARA CPF E CNPJ$(".inputAcesso.cpf").mask("999.999.999-99");
+   $(".inputAcesso.cpf").keydown(function(){
+    try {
+        $(".inputAcesso.cpf").unmask();
+    } catch (e) {}
+    var tamanho = $(".inputAcesso.cpf").val().length;
+    if(tamanho < 11){
+        $(".inputAcesso.cpf").mask("999.999.999-99");
+    } else if(tamanho >= 11){
+        $(".inputAcesso.cpf").mask("99.999.999/9999-99");
+    }
+});
     //SIDEBAR FIXO
     $(window).scroll(function() {
         if ($(this).scrollTop() > 305) {
