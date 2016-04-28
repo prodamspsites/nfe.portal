@@ -76,4 +76,11 @@
       template="templates/batchnavigation.pt"
       />
 
+    <browser:page
+        name="nfe_folder_contents"
+        for="*"
+        class=".folder_contents.FolderContentsView"
+        template="templates/folder_contents.pt"
+        permission="cmf.ListFolderContents" />
+
 </configure>
