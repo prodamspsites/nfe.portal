@@ -211,6 +211,10 @@ class FolderContentsTable(object):
                 view_url = url + "/folder_contents"
             else:
                 view_url = url
+            if obj.portal_type == 'pergunta':
+                title_or_id = obj.getObject().pergunta.output
+            else:
+                title_or_id = safe_unicode(pretty_title_or_id(plone_utils, obj))
 
             is_browser_default = len(browser_default[1]) == 1 and (
                 obj.id == browser_default[1][0])
@@ -227,7 +231,7 @@ class FolderContentsTable(object):
                 id=obj.getId,
                 quoted_id=urllib.quote_plus(obj.getId),
                 path=path,
-                title_or_id=obj.getObject().pergunta.output,
+                title_or_id=title_or_id,
                 obj_type=obj.Type,
                 size=obj.getObjSize,
                 modified=modified,
