@@ -12,8 +12,7 @@ $(document).ready(function(){
       //autoControls: true,
     });
 
-
-
+    $(".acessibilidade ul li a").focus();
 
     $('.bxslider2').bxSlider({
       pager: 'short'
