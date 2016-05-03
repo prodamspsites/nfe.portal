@@ -6,6 +6,7 @@
   <div class="menuSiteSegundoNivel">
     <nav class="menu cidadao" tal:attributes="class python:'menu-segundo-nivel ' + view.getSectionID()">
       <div class="wrap">
+        <a href="javascript:void(0);" class="menu-mobile-segundo">Abrir menu</a>
         <ul>
           <tal:items define="items python:view.getSegundoNivel(context)" repeat="item items">
               <li tal:condition="python:view.checkVisibility(item.getObject()) and not item.exclude_from_nav"
