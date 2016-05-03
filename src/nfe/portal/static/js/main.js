@@ -12,7 +12,59 @@ $(document).ready(function(){
       //autoControls: true,
     });
 
+    //CONTATO FOCUS TOPO
     $(".acessibilidade ul li a").focus();
+
+    //ALERTAS MOBILE
+    var windowsize = $(window).width();
+
+    if (windowsize < 800) {
+        $(".informativosHome p").each(function (i) {
+            var listText = []
+            var listShortText = []
+            var text = $(this).text();
+            var len = text.length;
+            var thisItens = $(this);
+            listText[i] = text;
+
+            if (len > 80) {
+                //mostra o ler mais se tiver muito texto
+                $(this).parent().find('.lerMaisMobile').show().attr('data-count', i);
+
+                //guarda o texto completo
+                var textoAlert = $(this).text();
+
+                //corta o texto
+                var query = text.split(" ", 13);
+                    query.push('...');
+                    res = query.join(' ');
+                    listShortText[i] = res;
+                $(this).text(res);
+
+                //volta o texto normal
+                $('.lerMaisMobile').click(function(){
+                    count = $(this).data('count');
+                    $(thisItens).text(listText[count]);
+                    $(this).remove();
+                    /*if ($(this).hasClass('mais')){
+                        console.log('mais');
+                        $(this).removeClass('mais');
+                        $(this).text('LER MENOS');
+                        $(this).addClass('menos');
+
+                    }
+                    else{
+                        console.log('menos');
+                        $(this).text('LER MAIS');
+                        $(this).removeClass('menos');
+                        $(this).addClass('mais');
+                        $(thisItens).text(listShortText[count]);
+                    }*/
+
+                });
+            }
+        });
+    }
 
     $('.bxslider2').bxSlider({
       pager: 'short'
@@ -76,9 +128,13 @@ $(document).ready(function(){
         $('.divMenu, .menuSite').toggle();
     });
     if (windowsize < 800) {
-        $('nav.menu ul li.submenu').click(function(){
-            $(this).toggleClass('active');
-            $(this).find('.menuLista').toggle();
+        $('nav.menu ul li.submenu > a').click(function(){
+            $(this).parent().toggleClass('active');
+            $(this).parent().find('.menuLista').toggle();
+            return false;
+        });
+        $('.menu-mobile-segundo').click(function(){
+            $('#content .menu-segundo-nivel ul').slideToggle();
         });
     }
     //MENU

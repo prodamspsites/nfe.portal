@@ -7,7 +7,7 @@
         <ul class="bxsliderAlerta">
         <tal:alertas tal:define="alertas view/getAlertas" repeat="alerta alertas">
             <li class="alertas">
-                <span tal:replace="structure python:alerta.getObject().mensagem_do_alerta.output" />
+                <span tal:replace="structure python:alerta.getObject().mensagem_do_alerta.output" /><a class="lerMaisMobile mais" href="javascript:void(0);"><strong>+</strong>LER MAIS</a>
             </li>
         </tal:alertas>
         </ul>
