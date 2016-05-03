@@ -25,7 +25,7 @@
           <div class="vcTambem">
             <p>Você também pode fazer uma busca por palavra-chave no nosso banco de informações:</p>
 
-            <input name="SearchableText" type="text" size="18" title="" placeholder="" class="filtrarLegislacao" id="filtrarLegislacao" />
+            <input name="textoBusca" type="text" size="18" title="" placeholder="" class="filtrarLegislacao" id="filtrarLegislacao" />
             <input class="filtrarLegislacaoButton" type="submit" value="Buscar" />
 
           </div>
@@ -33,6 +33,9 @@
 
       <tal:filtro condition="view/Filtro">
         <div class="divAccordeon find">
+          <tal:notFiltro condition="not:view/getFilteredContent">
+            <h2>Nenhum resultado foi encontrado</h2>
+          </tal:notFiltro>
           <tal:items define="items view/getFilteredContent" repeat="item items">
               <h2 tal:condition="repeat/item/start" tal:define="filtro view/Filtro" tal:content='string:Foram encontrados ${repeat/item/length} resultados para o termo "${filtro}"' />
               <div class="tileItem visualIEFloatFix">

@@ -19,7 +19,7 @@ class Duvidas(ViewletBase):
 
     def Filtro(self):
         try:
-            filtro = self.request.form['SearchableText']
+            filtro = self.request.form['textoBusca']
             return filtro
         except:
             return False
@@ -30,7 +30,7 @@ class Duvidas(ViewletBase):
         path = '/'.join(portal.getPhysicalPath()) + '/' + secao
 
         try:
-            filtro = self.request.form['SearchableText']
+            filtro = self.request.form['textoBusca']
         except:
             filtro = None
 
