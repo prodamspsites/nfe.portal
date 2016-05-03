@@ -126,6 +126,7 @@ $(document).ready(function(){
     //MENU MOBILE
     $('.menuResp').click(function(){
         $('.divMenu, .menuSite').toggle();
+        return false;
     });
     if (windowsize < 800) {
         $('nav.menu ul li.submenu > a').click(function(){
