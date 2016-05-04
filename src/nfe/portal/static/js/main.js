@@ -32,14 +32,14 @@ $(document).ready(function(){
                 $(this).parent().find('.lerMaisMobile').show().attr('data-count', i);
 
                 //guarda o texto completo
-                var textoAlert = $(this).text();
+                var textoAlert = $(this).html();
 
                 //corta o texto
                 var query = text.split(" ", 13);
                     query.push('...');
                     res = query.join(' ');
                     listShortText[i] = res;
-                $(this).text(res);
+                $(this).html(res);
 
                 //volta o texto normal
                 $('.lerMaisMobile').click(function(){
