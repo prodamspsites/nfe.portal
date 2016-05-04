@@ -1,4 +1,15 @@
 $(document).ready(function(){
+
+    if ($('body').hasClass('portaltype-folder') && $('body').hasClass('template-nfe_folder_contents') || $('body').hasClass('template-folder_contents')) {
+        links = $('#content td a.contenttype-folder').each(function() {
+            href = $(this).attr('href');
+            href = href.split('/');
+            if (href[href.length-1] == 'folder_contents') {
+                href[href.length-1] = 'nfe_folder_contents'
+            }
+            $(this).attr('href', href.join('/'))
+        })
+    }
     //BUSCA VAZIA
     $('.searchButton').click(function(){
         if ($('#searchGadget').val() == ''){
