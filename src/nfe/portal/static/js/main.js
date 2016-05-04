@@ -22,7 +22,7 @@ $(document).ready(function(){
         $(".informativosHome p").each(function (i) {
             var listText = []
             var listShortText = []
-            var text = $(this).text();
+            var text = $(this).html();
             var len = text.length;
             var thisItens = $(this);
             listText[i] = text;
@@ -44,7 +44,7 @@ $(document).ready(function(){
                 //volta o texto normal
                 $('.lerMaisMobile').click(function(){
                     count = $(this).data('count');
-                    $(thisItens).text(listText[count]);
+                    $(thisItens).html(listText[count]);
                     $(this).remove();
                     /*if ($(this).hasClass('mais')){
                         console.log('mais');
@@ -117,11 +117,6 @@ $(document).ready(function(){
 
     //CHECA A LARGURA DA TELA PARA MENU
     var windowsize = $(window).width();
-
-    $(window).resize(function() {
-      var windowsize = $(window).width();
-      $('.divMenu, .menuSite').show();
-    });
 
     //MENU MOBILE
     $('.menuResp').click(function(){
