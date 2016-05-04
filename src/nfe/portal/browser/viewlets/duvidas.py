@@ -2,6 +2,7 @@
 
 from plone.app.layout.viewlets import ViewletBase
 from plone import api
+import re
 
 
 class Duvidas(ViewletBase):
@@ -34,6 +35,18 @@ class Duvidas(ViewletBase):
         except:
             filtro = None
 
-        items = self.context.portal_catalog(path=path, portal_type="pergunta", SearchableText=filtro)
+        items = self.context.portal_catalog(path=path, portal_type="pergunta")
+        results = []
 
-        return items
+        for i in items:
+
+            term = i.getObject().pergunta.raw + ' ' + i.getObject().resposta.raw
+            term = self.limpaCodigo(term).split(' ')
+            if filtro in term:
+                results.append(i)
+
+        return results
+
+    def limpaCodigo(self, text):
+        p = re.compile(r'<.*?>')
+        return p.sub('', text)
