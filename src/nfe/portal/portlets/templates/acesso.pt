@@ -16,7 +16,7 @@
             <ul class="esqueciSenha">
               <li><a href="#" id="linkEsqueciSenha" title="Esqueci a senha">Esqueci a senha</a></li>
               <li class="divisaoEsquec">|</li>
-              <li><a href="#" id="linkNaoCadastrado" title="Nâo sou cadastrado">Não sou cadastrado</a></li>
+              <li><a href="#" id="linkNaoCadastrado" title="Não sou cadastrado">Não sou cadastrado</a></li>
             </ul>
             <a href="#" target="_blank" title="Acesso com certificado digital" id="linkCertificado" class="btnAcessoCertificado">Acesso com certificado digital</a>
           </fieldset>
