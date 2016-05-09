@@ -26,6 +26,22 @@ $(document).ready(function(){
     //CONTATO FOCUS TOPO
     $(".acessibilidade ul li a").focus();
 
+    //MASCARA CONTATO
+    $("input#telefone")
+        .mask("(99) 9999-9999?9")
+        .focusout(function (event) {
+            var target, phone, element;
+            target = (event.currentTarget) ? event.currentTarget : event.srcElement;
+            phone = target.value.replace(/\D/g, '');
+            element = $(target);
+            element.unmask();
+            if(phone.length > 10) {
+                element.mask("(99) 99999-999?9");
+            } else {
+                element.mask("(99) 9999-9999?9");
+            }
+        });
+
     //ALERTAS MOBILE
     var windowsize = $(window).width();
 
@@ -104,15 +120,15 @@ $(document).ready(function(){
     });
 
 //MASCARA CPF E CNPJ$(".inputAcesso.cpf").mask("999.999.999-99");
-   $(".inputAcesso.cpf").keydown(function(){
+   $(".inputAcesso.cpf, #cpf-ou-cnpj").keydown(function(){
     try {
-        $(".inputAcesso.cpf").unmask();
+        $(".inputAcesso.cpf, #cpf-ou-cnpj").unmask();
     } catch (e) {}
-    var tamanho = $(".inputAcesso.cpf").val().length;
+    var tamanho = $(".inputAcesso.cpf, #cpf-ou-cnpj").val().length;
     if(tamanho < 11){
-        $(".inputAcesso.cpf").mask("999.999.999-99");
+        $(".inputAcesso.cpf, #cpf-ou-cnpj").mask("999.999.999-99");
     } else if(tamanho >= 11){
-        $(".inputAcesso.cpf").mask("99.999.999/9999-99");
+        $(".inputAcesso.cpf, #cpf-ou-cnpj").mask("99.999.999/9999-99");
     }
 });
     //SIDEBAR FIXO
