@@ -28,7 +28,7 @@ $(document).ready(function(){
 
     //MASCARA CONTATO
     $("input#telefone")
-        .mask("(99) 9999-999999")
+        .mask("(99) 9999-99999")
         .focusout(function (event) {
             var target, phone, element;
             target = (event.currentTarget) ? event.currentTarget : event.srcElement;
@@ -36,9 +36,9 @@ $(document).ready(function(){
             element = $(target);
             element.unmask();
             if(phone.length > 10) {
-                element.mask("(99) 99999-999?9");
+                element.mask("(99) 99999-9999");
             } else {
-                element.mask("(99) 9999-9999?9");
+                element.mask("(99) 9999-9999");
             }
         });
 
