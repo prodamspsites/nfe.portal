@@ -40,9 +40,9 @@ class Duvidas(ViewletBase):
 
         for i in items:
 
-            term = i.getObject().pergunta.raw + ' ' + i.getObject().resposta.raw
+            term = i.getObject().pergunta.raw.lower() + ' ' + i.getObject().resposta.raw.lower()
             term = self.limpaCodigo(term).split(' ')
-            if filtro in term:
+            if filtro.lower() in term:
                 results.append(i)
 
         return results
