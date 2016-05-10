@@ -1,4 +1,22 @@
+// $.urlParam = function(name){
+//     var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+//     if (results==null){
+//        return null;
+//     }
+//     else{
+//        return results[1] || 0;
+//     }
+// }
+
 $(document).ready(function(){
+
+
+    if ($('body').hasClass('template-legislacao_view')) {
+        queryString = window.location.search;
+        if(queryString) {
+            $('.pagination').last().remove()
+        }
+    }
 
     if ($('body').hasClass('portaltype-folder') && $('body').hasClass('template-nfe_folder_contents') || $('body').hasClass('template-folder_contents')) {
         links = $('#content td a.contenttype-folder').each(function() {

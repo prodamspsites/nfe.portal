@@ -38,8 +38,13 @@
       </div>
     </tal:filtro>
 
-    <tal:filtro condition="view/FiltroLegislacao">
-      <tal:items define="items python:view.getLegislacao(batch)" repeat="item items">
+    <tal:filtro condition="view/FiltroLegislacao"
+                define="Batch python:modules['plone.batching'].Batch;
+                        b_size python:500;
+                        b_start python:0;
+                        fullList python:Batch(batch, b_size, int(b_start));
+                        items python:view.getLegislacao(fullList);">
+      <tal:items repeat="item items">
           <h3 tal:condition="repeat/item/start" tal:define="filtro view/FiltroLegislacao" tal:content="string:Foram encontrados ${repeat/item/length} resultados para o termo ${filtro}" />
 
           <div class="tileItem visualIEFloatFix"
