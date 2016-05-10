@@ -32,6 +32,7 @@ class Duvidas(ViewletBase):
 
         try:
             filtro = self.request.form['textoBusca']
+            filtro = filtro.split(' ')
         except:
             filtro = None
 
@@ -39,10 +40,9 @@ class Duvidas(ViewletBase):
         results = []
 
         for i in items:
-
             term = i.getObject().pergunta.raw.lower() + ' ' + i.getObject().resposta.raw.lower()
             term = self.limpaCodigo(term).split(' ')
-            if filtro.lower() in term:
+            if any(i in filtro for i in term):
                 results.append(i)
 
         return results
