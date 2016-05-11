@@ -17,14 +17,14 @@ class Colecao(BrowserView):
 
     def Filtro(self):
         try:
-            filtro = self.request.form['SearchableText']
+            filtro = self.request.form['textoBusca']
             return filtro
         except:
             return False
 
     def getFilteredContent(self, items):
         try:
-            filtro = self.request.form['SearchableText']
+            filtro = self.request.form['textoBusca']
         except:
             filtro = None
 
@@ -46,7 +46,7 @@ class Colecao(BrowserView):
 
     def FiltroDuvida(self):
         try:
-            filtro = self.request.form['SearchableText']
+            filtro = self.request.form['textoBusca']
             return filtro
         except:
             return False
