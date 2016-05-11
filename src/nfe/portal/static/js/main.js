@@ -132,14 +132,17 @@ $(document).ready(function(){
     }
 });
     //SIDEBAR FIXO
+    var scrollBottom = $(document).height() - 690;
     $(window).scroll(function() {
-        if ($(this).scrollTop() > 305) {
+        if (($(this).scrollTop() > 205) && ($(this).scrollTop() < scrollBottom)) {
             $('#portal-column-two').addClass('fixo');
             $('#portal-column-content').addClass('fixo');
-        } else {
-            $('#portal-column-two').removeClass('fixo');
+        }
+        else{
+             $('#portal-column-two').removeClass('fixo');
             $('#portal-column-content').removeClass('fixo');
         }
+        console.log($(this).scrollTop() , scrollBottom);
     });
 
     //CHECA A LARGURA DA TELA PARA MENU
