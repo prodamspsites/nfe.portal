@@ -45,20 +45,7 @@ $(document).ready(function(){
     $(".acessibilidade ul li a").focus();
 
     //MASCARA CONTATO
-    $("input#telefone")
-        .mask("(99) 9999-99999")
-        .focusout(function (event) {
-            var target, phone, element;
-            target = (event.currentTarget) ? event.currentTarget : event.srcElement;
-            phone = target.value.replace(/\D/g, '');
-            element = $(target);
-            element.unmask();
-            if(phone.length > 10) {
-                element.mask("(99) 99999-9999");
-            } else {
-                element.mask("(99) 9999-9999");
-            }
-        });
+    $("input#telefone").mask("(99) 9999-99999");
 
     //ALERTAS MOBILE
     var windowsize = $(window).width();
