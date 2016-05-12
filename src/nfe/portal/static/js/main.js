@@ -147,7 +147,7 @@ $(document).ready(function(){
              $('#portal-column-two').removeClass('fixo');
             $('#portal-column-content').removeClass('fixo');
         }
-        console.log($(this).scrollTop() , scrollBottom);
+        //console.log($(this).scrollTop() , scrollBottom);
     });
 
     //CHECA A LARGURA DA TELA PARA MENU
