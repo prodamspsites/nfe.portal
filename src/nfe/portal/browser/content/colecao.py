@@ -73,9 +73,6 @@ class Colecao(BrowserView):
                 setattr(i, 'numOrder', int(num))
             except:
                 setattr(i, 'numOrder', int(99999))
-                i.numOrder = 0
-        for i in parents:
-            print i.numOrder
         parents = sorted(parents, key=lambda x: x.numOrder)
         return parents
 
