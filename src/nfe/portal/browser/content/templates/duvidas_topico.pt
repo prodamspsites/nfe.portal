@@ -55,11 +55,10 @@
     </tal:filtro>
 
     <tal:notFiltro condition="not:view/Filtro">
-      <tal:topico define="parents python:view.getParents(batch)" repeat="parent parents">
-        <h2 class="subtitulo" tal:content="parent/Title" />
-        <div class="divAccordeon">
-          <metal:block use-macro="context/standard_view/macros/entries">
-          <metal:entry fill-slot="entry">
+        <tal:topico define="parents python:view.getParents(batch)" repeat="parent parents">
+          <h2 class="subtitulo" tal:content="parent/Title" />
+          <div class="divAccordeon">
+
            <tal:childrens define="childrens python:parent.listFolderContents(contentFilter={'portal_type': 'pergunta'})" repeat="children childrens">
              <div class="tileItem visualIEFloatFix">
 
@@ -71,10 +70,8 @@
 
               </div>
             </tal:childrens>
-          </metal:entry>
-          </metal:block>
-        </div>
-      </tal:topico>
+          </div>
+        </tal:topico>
     </tal:notFiltro>
 
     </metal:entries>

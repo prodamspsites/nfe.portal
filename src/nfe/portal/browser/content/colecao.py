@@ -67,6 +67,7 @@ class Colecao(BrowserView):
             parent = i.getObject().aq_parent
             if parent not in parents:
                 parents.append(parent)
+        parents = sorted(parents, key=lambda x: x.Title())
         return parents
 
     def isSAT(self, obj):
