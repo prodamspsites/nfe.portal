@@ -13,6 +13,7 @@
 
     <metal:entries fill-slot="entries">
     <tal:filtro>
+      <span tal:content="python:view.getParents(batch)" />
       <div id="filtraConteudo" class="faq">
         <form action="http://localhost:8080/Plone/@@search" tal:attributes="action python:'/'.join(context.getPhysicalPath())">
 

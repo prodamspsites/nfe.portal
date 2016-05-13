@@ -61,6 +61,14 @@ class Colecao(BrowserView):
 
         return items
 
+    def getParents(self, items):
+        parents = []
+        print items
+        for i in items:
+            for lero in i:
+                print lero
+        return parents
+
     def isSAT(self, obj):
         parentId = obj.aq_parent.id
         if parentId == 'sat-iss':

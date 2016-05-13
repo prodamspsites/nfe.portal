@@ -35,6 +35,13 @@
       class=".colecao.Colecao"
       />
 
+    <browser:page
+      name="duvidas_topico_view"
+      permission="zope2.View"
+      for="plone.app.contenttypes.interfaces.ICollection"
+      template="templates/duvidas.pt"
+      class=".colecao.Colecao"
+      />
 
     <browser:page
       name="legislacao_view"
