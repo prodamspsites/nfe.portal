@@ -63,10 +63,10 @@ class Colecao(BrowserView):
 
     def getParents(self, items):
         parents = []
-        print items
         for i in items:
-            for lero in i:
-                print lero
+            parent = i.getObject().aq_parent
+            if parent not in parents:
+                parents.append(parent)
         return parents
 
     def isSAT(self, obj):

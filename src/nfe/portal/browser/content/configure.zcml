@@ -39,7 +39,7 @@
       name="duvidas_topico_view"
       permission="zope2.View"
       for="plone.app.contenttypes.interfaces.ICollection"
-      template="templates/duvidas.pt"
+      template="templates/duvidas_topico.pt"
       class=".colecao.Colecao"
       />
 
