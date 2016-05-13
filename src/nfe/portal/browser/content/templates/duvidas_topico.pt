@@ -1,0 +1,86 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+<body>
+
+<metal:content-core fill-slot="content-core">
+<metal:block use-macro="context/standard_view/macros/content-core">
+
+    <metal:entries fill-slot="entries">
+    <tal:filtro>
+      <div id="filtraConteudo" class="faq">
+        <form action="http://localhost:8080/Plone/@@search" tal:attributes="action python:'/'.join(context.getPhysicalPath())">
+
+          <div>
+            <label for="filtrarLegislacao">Localize uma dúvida:</label>
+
+            <input name="textoBusca" type="text" size="18" title="Digite aqui o tema de sua dúvida" placeholder="Digite aqui o tema de sua dúvida" class="filtrarLegislacao" id="filtrarLegislacao" />
+            <input class="filtrarLegislacaoButton" type="submit" value="Filtrar" />
+            <a class="btnLimparFiltro" tal:condition="view/FiltroDuvida" tal:attributes="href python:context.absolute_url()">Limpar Filtro</a>
+
+          </div>
+        </form>
+
+
+      </div>
+    </tal:filtro>
+
+    <tal:filtro condition="view/Filtro">
+      <div class="divAccordeon">
+          <tal:notFiltro define="items python:view.getFilteredContent(batch)"
+                         condition="not:items">
+            <h2>Nenhum resultado foi encontrado</h2>
+          </tal:notFiltro>
+        <tal:items define="items python:view.getFilteredContent(batch)" repeat="item items">
+            <h2 tal:condition="repeat/item/start" tal:define="filtro view/FiltroDuvida" tal:content="string:Foram encontrados ${repeat/item/length} resultados para o termo ${filtro}" />
+            <div class="tileItem visualIEFloatFix">
+
+                <tal:pergunta  tal:condition="python:item.portal_type=='pergunta'">
+                  <h3><span tal:content="structure python:item.pergunta.output" /></h3>
+                  <div class="textoAccordeon">
+                    <span tal:replace="structure python:item.resposta.output" />
+
+                  </div>
+                </tal:pergunta>
+                <div class="visualClear"><!-- --></div>
+            </div>
+
+        </tal:items>
+      </div>
+    </tal:filtro>
+
+    <tal:notFiltro condition="not:view/Filtro">
+      <tal:topico define="parents python:view.getParents(batch)" repeat="parent parents">
+        <h2 class="subtitulo" tal:content="parent/Title" />
+        <div class="divAccordeon">
+          <metal:block use-macro="context/standard_view/macros/entries">
+          <metal:entry fill-slot="entry">
+           <tal:childrens define="childrens python:parent.listFolderContents(contentFilter={'portal_type': 'pergunta'})" repeat="children childrens">
+             <div class="tileItem visualIEFloatFix">
+
+                      <h3><span tal:content="structure python:children.pergunta.output" /></h3>
+                      <div class="textoAccordeon">
+                        <span tal:replace="structure python:children.resposta.output" />
+
+                      </div>
+
+              </div>
+            </tal:childrens>
+          </metal:entry>
+          </metal:block>
+        </div>
+      </tal:topico>
+    </tal:notFiltro>
+
+    </metal:entries>
+
+</metal:block>
+</metal:content-core>
+
+</body>
+</html>
