@@ -126,7 +126,7 @@ $(document).ready(function(){
     });
 
 //MASCARA CPF E CNPJ$(".inputAcesso.cpf").mask("999.999.999-99");
-   $(".inputAcesso.cpf, #cpf-ou-cnpj").keydown(function(){
+   $(".inputAcesso.cpf, #cpf-ou-cnpj").focus(function(){
     try {
         $(".inputAcesso.cpf, #cpf-ou-cnpj").unmask();
     } catch (e) {}
