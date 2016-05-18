@@ -40,7 +40,6 @@ class Duvidas(ViewletBase):
             filtro = None
 
         items = self.context.portal_catalog(path=path, portal_type="pergunta")
-	print items
         results = []
 
         for i in items:
