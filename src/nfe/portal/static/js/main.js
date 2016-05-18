@@ -14,7 +14,8 @@ $(document).ready(function(){
     if ($('body').hasClass('template-legislacao_view')) {
         queryString = window.location.search;
         if(queryString) {
-            $('.pagination').last().remove()
+            $('.pagination').remove();
+            $('.listingBar').remove();
         }
     }
 
