@@ -130,13 +130,18 @@ $(document).ready(function(){
     try {
         $(".inputAcesso.cpf, #cpf-ou-cnpj").unmask();
     } catch (e) {}
-    var tamanho = $(".inputAcesso.cpf, #cpf-ou-cnpj").val().length;
+    });
+
+   $(".inputAcesso.cpf, #cpf-ou-cnpj").focusout(function(){
+    var tamanho = $(".inputAcesso.cpf, #cpf-ou-cnpj").val();
+    tamanho = tamanho.replace(/\./g,'').replace(/\-/g,'').replace(/\//g,'').length;
+
     if(tamanho < 11){
         $(".inputAcesso.cpf, #cpf-ou-cnpj").mask("999.999.999-99");
     } else if(tamanho >= 11){
         $(".inputAcesso.cpf, #cpf-ou-cnpj").mask("99.999.999/9999-99");
     }
-});
+    });
     //SIDEBAR FIXO
     var scrollBottom = $(document).height() - 690;
     $(window).scroll(function() {
