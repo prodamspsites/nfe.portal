@@ -34,8 +34,7 @@ class Duvidas(ViewletBase):
 
         try:
             filtro = self.request.form['textoBusca']
-            filtro = filtro.split(' ')
-            print 'com filtro'
+            filtro = filtro.lower().split(' ')
         except:
             filtro = None
 
