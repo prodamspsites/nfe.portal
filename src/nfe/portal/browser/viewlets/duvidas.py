@@ -32,7 +32,7 @@ class Duvidas(ViewletBase):
 
         try:
             filtro = self.request.form['textoBusca']
-            filtro = filtro.split(' ')
+            filtro = filtro.lower().split(' ')
         except:
             filtro = None
 
