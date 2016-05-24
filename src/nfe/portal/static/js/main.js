@@ -133,15 +133,15 @@ $(document).ready(function(){
      $(".inputAcesso.cpf, #cpf-ou-cnpj").attr('onkeypress','mascaraMutuario(this,cpfCnpj)');
      $(".inputAcesso.cpf, #cpf-ou-cnpj").attr('onblur','clearTimeout()');
 
-    /*$(".inputAcesso.cpf, #cpf-ou-cnpj").focus(function(){
+    $(".inputAcesso.cpf, #cpf-ou-cnpj").focus(function(){
     try {
         $(".inputAcesso.cpf, #cpf-ou-cnpj").unmask();
     } catch (e) {}
     });
 
-   $(".inputAcesso.cpf, #cpf-ou-cnpj").focusout(function(){
-    var tamanho = $(".inputAcesso.cpf, #cpf-ou-cnpj").val();
-    tamanho = tamanho.replace(/\./g,'').replace(/\-/g,'').replace(/\//g,'').length;
+   $(".inputAcesso.cpf, #cpf-ou-cnpj").keydown(function(e){
+    console.log(e);
+    var tamanho = $(".inputAcesso.cpf, #cpf-ou-cnpj").val().length;
 
     if(tamanho < 11){
         $(".inputAcesso.cpf, #cpf-ou-cnpj").mask("999.999.999-99");
@@ -161,7 +161,7 @@ $(document).ready(function(){
             $('#portal-column-content').removeClass('fixo');
         }
         //console.log($(this).scrollTop() , scrollBottom);
-    });*/
+    });
 
     //CHECA A LARGURA DA TELA PARA MENU
     var windowsize = $(window).width();
@@ -324,7 +324,7 @@ function cpfCnpj(v){
         v=v.replace(/(\d{3})(\d)/,"$1.$2")
         //Coloca um hífen entre o terceiro e o quarto dígitos
         v=v.replace(/(\d{3})(\d{1,2})$/,"$1-$2")
-    } else if (v.length <= 18) { //CNPJ
+    } else { //CNPJ
         //Coloca ponto entre o segundo e o terceiro dígitos
         v=v.replace(/^(\d{2})(\d)/,"$1.$2")
         //Coloca ponto entre o quinto e o sexto dígitos
