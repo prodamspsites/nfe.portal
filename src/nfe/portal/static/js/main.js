@@ -7,7 +7,6 @@
 //        return results[1] || 0;
 //     }
 // }
-
 $(document).ready(function(){
 
 
@@ -126,7 +125,10 @@ $(document).ready(function(){
     });
 
 //MASCARA CPF E CNPJ$(".inputAcesso.cpf").mask("999.999.999-99");
-   $(".inputAcesso.cpf, #cpf-ou-cnpj").focus(function(){
+     $(".inputAcesso.cpf, #cpf-ou-cnpj").attr('onkeypress','mascaraMutuario(this,cpfCnpj)');
+     $(".inputAcesso.cpf, #cpf-ou-cnpj").attr('onblur','clearTimeout()');
+
+    /*$(".inputAcesso.cpf, #cpf-ou-cnpj").focus(function(){
     try {
         $(".inputAcesso.cpf, #cpf-ou-cnpj").unmask();
     } catch (e) {}
@@ -154,7 +156,7 @@ $(document).ready(function(){
             $('#portal-column-content').removeClass('fixo');
         }
         //console.log($(this).scrollTop() , scrollBottom);
-    });
+    });*/
 
     //CHECA A LARGURA DA TELA PARA MENU
     var windowsize = $(window).width();
@@ -297,3 +299,35 @@ $(document).ready(function(){
         });
 
 });
+//MASCARA CPF CNPJ
+function mascaraMutuario(o,f){
+    v_obj=o
+    v_fun=f
+    setTimeout('execmascara()',1)
+}
+function execmascara(){
+    v_obj.value=v_fun(v_obj.value)
+}
+function cpfCnpj(v){
+    //Remove tudo o que não é dígito
+    v=v.replace(/\D/g,"")
+    if (v.length <= 14) { //CPF
+        //Coloca um ponto entre o terceiro e o quarto dígitos
+        v=v.replace(/(\d{3})(\d)/,"$1.$2")
+        //Coloca um ponto entre o terceiro e o quarto dígitos
+        //de novo (para o segundo bloco de números)
+        v=v.replace(/(\d{3})(\d)/,"$1.$2")
+        //Coloca um hífen entre o terceiro e o quarto dígitos
+        v=v.replace(/(\d{3})(\d{1,2})$/,"$1-$2")
+    } else { //CNPJ
+        //Coloca ponto entre o segundo e o terceiro dígitos
+        v=v.replace(/^(\d{2})(\d)/,"$1.$2")
+        //Coloca ponto entre o quinto e o sexto dígitos
+        v=v.replace(/^(\d{2})\.(\d{3})(\d)/,"$1.$2.$3")
+        //Coloca uma barra entre o oitavo e o nono dígitos
+        v=v.replace(/\.(\d{3})(\d)/,".$1/$2")
+        //Coloca um hífen depois do bloco de quatro dígitos
+        v=v.replace(/(\d{4})(\d)/,"$1-$2")
+    }
+    return v
+}
