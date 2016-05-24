@@ -8,11 +8,16 @@
 //     }
 // }
 $(document).ready(function(){
-
-
     if ($('body').hasClass('template-legislacao_view')) {
-        queryString = window.location.search;
-        if(queryString) {
+        var $_GET = {};
+        document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
+            function decode(s) {
+                return decodeURIComponent(s.split("+").join(" "));
+            }
+
+            $_GET[decode(arguments[1])] = decode(arguments[2]);
+        });
+        if($_GET['filtrarLegislacao']) {
             $('.pagination').remove();
             $('.listingBar').remove();
         }
