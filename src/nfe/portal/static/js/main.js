@@ -142,8 +142,6 @@ $(document).ready(function(){
    $(".inputAcesso.cpf, #cpf-ou-cnpj").keydown(function(e){
 
         if ((e.keyCode < 96 || e.keyCode > 105)) {
-
-            e.preventDefault()
             var tamanho = $(".inputAcesso.cpf, #cpf-ou-cnpj").val().length;
 
             if(tamanho < 11){
@@ -151,8 +149,6 @@ $(document).ready(function(){
             } else if(tamanho >= 11){
                 $(".inputAcesso.cpf, #cpf-ou-cnpj").mask("99.999.999/9999-99");
             }
-
-
         }
 
 
