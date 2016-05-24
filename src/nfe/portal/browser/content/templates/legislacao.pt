@@ -38,7 +38,7 @@
       </div>
     </tal:filtro>
     <tal:filtro condition="view/FiltroLegislacao"
-                define="fullList python:context.queryCatalog();
+                define="fullList python:context.queryCatalog(b_size=5000);
                         items python:view.getLegislacao(fullList);">
       <h2 tal:condition="python:len(items) == 0">Nenhum resultado foi encontrado</h2>
       <tal:items repeat="item items">
