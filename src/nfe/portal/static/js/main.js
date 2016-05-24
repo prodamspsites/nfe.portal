@@ -141,10 +141,9 @@ $(document).ready(function(){
 
    $(".inputAcesso.cpf, #cpf-ou-cnpj").keydown(function(e){
 
-        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
-            e.preventDefault()
+        if ((e.keyCode < 96 || e.keyCode > 105)) {
 
-        } else {
+            e.preventDefault()
             var tamanho = $(".inputAcesso.cpf, #cpf-ou-cnpj").val().length;
 
             if(tamanho < 11){
@@ -152,6 +151,7 @@ $(document).ready(function(){
             } else if(tamanho >= 11){
                 $(".inputAcesso.cpf, #cpf-ou-cnpj").mask("99.999.999/9999-99");
             }
+
 
         }
 
