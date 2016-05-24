@@ -20,7 +20,7 @@
             <label for="filtrarLegislacao">Filtrar legislação:</label>
 
             <select class="filtrarLegislacao" name="filtrarLegislacao" id="filtrarLegislacao">
-              <option selected value="Toda a legislação">Toda a legislação</option>
+              <option selected value="Toda a legislação">Selecione um item</option>
               <option value="Lei">Leis</option>
               <option value="Decreto">Decretos</option>
               <option value="Portaria">Portarias</option>
@@ -62,7 +62,7 @@
                     </div>
                   </tal:isSat>
                 </h2>
-                  <time class="data" tal:define="date obj/EffectiveDate;
+                  <time class="data" tal:define="date obj/Date;
                                     data python:view.getDate(date)"
                         tal:content="data" />
                 <div class="visualClear"><!----></div>
