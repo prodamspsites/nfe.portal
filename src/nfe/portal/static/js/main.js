@@ -141,7 +141,7 @@ $(document).ready(function(){
 
    $(".inputAcesso.cpf, #cpf-ou-cnpj").keydown(function(e){
 
-        if ((e.keyCode < 96 || e.keyCode > 105)) {
+        if ((e.keyCode < 96 && e.keyCode > 105)) {
             var tamanho = $(".inputAcesso.cpf, #cpf-ou-cnpj").val().length;
 
             if(tamanho < 11){
