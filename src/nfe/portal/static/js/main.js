@@ -140,14 +140,21 @@ $(document).ready(function(){
     });
 
    $(".inputAcesso.cpf, #cpf-ou-cnpj").keydown(function(e){
-    console.log(e);
-    var tamanho = $(".inputAcesso.cpf, #cpf-ou-cnpj").val().length;
 
-    if(tamanho < 11){
-        $(".inputAcesso.cpf, #cpf-ou-cnpj").mask("999.999.999-99");
-    } else if(tamanho >= 11){
-        $(".inputAcesso.cpf, #cpf-ou-cnpj").mask("99.999.999/9999-99");
-    }
+        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+            console.log(e);
+            var tamanho = $(".inputAcesso.cpf, #cpf-ou-cnpj").val().length;
+
+            if(tamanho < 11){
+                $(".inputAcesso.cpf, #cpf-ou-cnpj").mask("999.999.999-99");
+            } else if(tamanho >= 11){
+                $(".inputAcesso.cpf, #cpf-ou-cnpj").mask("99.999.999/9999-99");
+            }
+
+
+        }
+
+
     });
     //SIDEBAR FIXO
     var scrollBottom = $(document).height() - 690;
