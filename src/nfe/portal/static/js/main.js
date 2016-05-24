@@ -324,7 +324,7 @@ function cpfCnpj(v){
         v=v.replace(/(\d{3})(\d)/,"$1.$2")
         //Coloca um hífen entre o terceiro e o quarto dígitos
         v=v.replace(/(\d{3})(\d{1,2})$/,"$1-$2")
-    } else { //CNPJ
+    } else if (v.length <= 18) { //CNPJ
         //Coloca ponto entre o segundo e o terceiro dígitos
         v=v.replace(/^(\d{2})(\d)/,"$1.$2")
         //Coloca ponto entre o quinto e o sexto dígitos
