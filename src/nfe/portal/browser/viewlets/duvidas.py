@@ -42,7 +42,6 @@ class Duvidas(ViewletBase):
         results = []
 
         for i in items:
-            print i
             term = i.getObject().pergunta.raw.lower() + ' ' + i.getObject().resposta.raw.lower()
             term = self.limpaCodigo(term).split(' ')
             if any(i in filtro for i in term):

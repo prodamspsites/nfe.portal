@@ -25,15 +25,17 @@ class Colecao(BrowserView):
     def getFilteredContent(self, items):
         try:
             filtro = self.request.form['textoBusca']
+            filtro = filtro.lower().split(' ')
         except:
             filtro = None
 
         filtered = []
 
         for i in items:
-            terms = i.getObject().pergunta.raw + i.getObject().resposta.raw
-            if filtro in terms:
-                filtered.append(i.getObject())
+            term = i.getObject().pergunta.raw.lower() + ' ' + i.getObject().resposta.raw.lower()
+            term = self.limpaCodigo(term).split(' ')
+            if any(i in filtro for i in term):
+                results.append(i)
 
         return filtered
 
@@ -82,3 +84,7 @@ class Colecao(BrowserView):
             return 'sat-iss'
         else:
             return False
+
+    def limpaCodigo(self, text):
+        p = re.compile(r'<.*?>')
+        return p.sub('', text)

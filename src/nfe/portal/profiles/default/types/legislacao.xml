@@ -59,6 +59,7 @@
   &lt;element&gt;Instrução Normativa&lt;/element&gt;
   &lt;element&gt;Ato Declaratório&lt;/element&gt;
   &lt;element&gt;Comunicado&lt;/element&gt;
+  &lt;element&gt;Outros&lt;/element&gt;
   &lt;/values&gt;
   &lt;/field&gt;
   &lt;/schema&gt;
