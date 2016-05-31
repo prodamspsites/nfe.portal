@@ -2,6 +2,7 @@
 
 from Products.Five import BrowserView
 from DateTime import DateTime
+import re
 
 
 class Noticias(BrowserView):
@@ -35,7 +36,7 @@ class Colecao(BrowserView):
             term = i.getObject().pergunta.raw.lower() + ' ' + i.getObject().resposta.raw.lower()
             term = self.limpaCodigo(term).split(' ')
             if any(i in filtro for i in term):
-                results.append(i)
+                filtered.append(i.getObject())
 
         return filtered
 
