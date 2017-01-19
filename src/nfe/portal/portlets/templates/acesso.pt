@@ -9,7 +9,8 @@
         <form class="acessoSistema" id="wploginform" method="post" name="test" action="https://nfe.prefeitura.sp.gov.br/login.aspx">
           <fieldset>
             <legend>Formulário de acesso ao sistema</legend>
-            <input type="text" class="inputAcesso cpf" id="j_username" name="j_username" placeholder="CPF ou CNPJ"  maxlength="18" />
+	    <input type="text" id="j_username" placeholder="CPF ou CNPJ" maxlength="18" class="inputAcesso" name="j_username" />
+            <!-- <input type="text" class="inputAcesso cpf" id="j_username" name="j_username" placeholder="CPF ou CNPJ"  maxlength="18" /> -->
             <input type="password" id="j_password" name="j_password" class="inputAcesso senha" placeholder="Senha" />
             <input type="hidden" id="j_command" name="j_command" value="executarLogin">
             <input type="submit" id="enviar" value="Entrar" class="btnEntrar" />

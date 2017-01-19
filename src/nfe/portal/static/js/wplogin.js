@@ -16,18 +16,36 @@ $(document).ready(function() {
     j_username = $("#j_username");
     j_password = $("#j_password");
 
-    j_username.focus(function(){
-        $(this).setMask("99999999999999").val("");
-    });
 
-    j_username.blur(function(){
-        var j_username = $(this).val()
-        if(j_username.length <= 11)
-            $(this).setMask("999.999.999-99");
-        if(j_username.length > 11)
-            $(this).setMask("99.999.999/9999-99");
-        validateCpfCnpj();
-    })
+$("input").keyup(function( e ) {
+    if( e.which == 9 ) {
+        try {
+          j_username.unmask();
+        } catch (e) {}
+        var tamanho = j_username.val().length;
+        if(tamanho <= 11){
+            j_username.mask("999.999.999-99");
+        } else {
+            j_username.mask("99.999.999/9999-99");
+        }
+		}
+    validateCpfCnpj();
+} );
+
+j_username.keypress(function(){
+    try {
+    	j_username.unmask();
+    } catch (e) {}
+    var tamanho = j_username.val().length;
+    if(tamanho < 11){
+        j_username.mask("999.999.999-99");
+    } else{
+        j_username.mask("99.999.999/9999-99");
+    }
+    validateCpfCnpj();
+});
+
+
 
     loginForm.submit(validateCpfCnpj);
 });
