@@ -21,6 +21,27 @@
               <h2>Placar</h2>
             </div>
             <div id="banner_placar">
+                <span>Crédito concedido (em R$):</span>
+                        <br />
+                        <div id="flip-counter1" class="flip-counter"></div>
+                          <script type="text/javascript">
+                          //<![CDATA[
+                          $(function() {
+                              // Initialize a new counter
+                              var myCounter = new flipCounter('flip-counter1', {
+                                  value: valorInicioContador1 ,
+                                  inc: valorDeIncremento1 ,
+                                  pace: valorPace1,
+                                  numFractionalDigits:2 ,
+                                  auto: true,
+                                  formatNumberOptions: { format: "000,000,000.00", locale: "br" }
+                              });
+                          });
+                      valorDeIncremento1 = valorDevolutometroDeIncremento;
+                      valorInicioContador1 = valorDevolutometroInicioContador;
+                      valorPace1 = valorDevolutometroVelocidadeIncremento;
+                          //]]>
+                          </script>
                           <!--ESCONDE VERSAO MOBILE-->
                           <div class="placarMobile">
                                 <span>Prestadores de serviços autorizados a emitir Nota Fiscal:</span>
