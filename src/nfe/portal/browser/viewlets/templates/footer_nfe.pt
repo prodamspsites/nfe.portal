@@ -20,9 +20,4 @@
           </div>
       </div>
     </div>
-    <script>
-      ga('create', 'UA-78513286-1', 'auto', {'allowLinker': true});
-      ga('require', 'linker');
-      ga('linker:autoLink', ['nfpaulistana.prefeitura.sp.gov.br', 'www.nfpaulistana.prefeitura.sp.gov.br', 'notadomilhao.prefeitura.sp.gov.br', 'www.notadomilhao.prefeitura.sp.gov.br'] );
-    </script>
 </div>
