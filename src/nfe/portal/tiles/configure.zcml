@@ -32,7 +32,7 @@
       />
 
   <plone:tile
-      name="page_template"
+      name="nfe_page_template"
       title="Exibe um page template"
       description="Exibe o page template selecionado"
       add_permission="cmf.ModifyPortalContent"
@@ -70,7 +70,7 @@
   </unconfigure>
 
   <plone:tile
-      name="collective.cover.collection"
+      name="nfe_collective.cover.collection"
       title="Collection Tile"
       description="A tile that shows the result of a collection."
       icon="++resource++collective.cover/tile-collection.png"

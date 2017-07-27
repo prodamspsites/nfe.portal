@@ -25,11 +25,10 @@
 
                 <li tal:define="obj item/getObject;">
                   <tal:hasImage tal:condition="python:obj.image">
-
-                    <img  tal:define="path python:'/'.join(obj.getPhysicalPath())"
-                          tal:attributes="src string:${path}/@@images/image.jpeg;
-                                          alt obj/Description|obj/Title"
-                          class="imgSliderHome" />
+                    <img  tal:define="scales python:obj.restrictedTraverse('@@images');
+                                      imageLarge python:scales.scale('image', width=500, height=500)"
+                          tal:attributes="src imageLarge/url"
+                         class="imgSliderHome" />
                   </tal:hasImage>
 
                   <div class="contSliderHome">

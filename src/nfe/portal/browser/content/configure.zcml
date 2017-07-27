@@ -4,7 +4,7 @@
     i18n_domain="nfe.portal">
 
     <browser:page
-      name="chamadaView"
+      name="nfeChamadaView"
       for="*"
       class=".chamada.chamadaView"
       template="templates/chamada.pt"
@@ -28,7 +28,7 @@
       />
 
     <browser:page
-      name="duvidas_view"
+      name="nfe_duvidas_view"
       permission="zope2.View"
       for="plone.app.contenttypes.interfaces.ICollection"
       template="templates/duvidas.pt"
@@ -52,7 +52,7 @@
       />
 
     <browser:page
-      name="capa_noticias_view"
+      name="nfe_capa_noticias_view"
       permission="zope2.View"
       for="plone.app.contenttypes.interfaces.ICollection"
       template="templates/capa_noticias.pt"
