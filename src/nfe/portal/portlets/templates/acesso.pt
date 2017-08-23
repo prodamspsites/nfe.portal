@@ -9,7 +9,7 @@
         <form class="acessoSistema" id="wploginform" method="post" name="test" action="https://nfe.prefeitura.sp.gov.br/login.aspx">
           <fieldset>
             <legend>Formulário de acesso ao sistema</legend>
-              <a href="#" target="_blank" title="Acesso com certificado digital" id="linkCertificado" class="btnAcessoCertificado">Entrar</a>
+              <a href="https://nfe.prefeitura.sp.gov.br/login.aspx" target="_blank" title="Acesso ao sistema" id="linkCertificado" class="btnAcessoCertificado">Acessar o sistema</a>
           </fieldset>
         </form>
       </div>
